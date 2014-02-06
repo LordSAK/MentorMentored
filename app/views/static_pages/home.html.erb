@@ -1,4 +1,3 @@
-
 <div class="content">
             <%= image_tag "whitenetwork.png", :class => "network" %>
 
@@ -14,11 +13,13 @@
            <tr>
            <td align="center">
             <div id="loginbutton" align="center" style="font-family:Arial;">
-            <a href="/Default.aspx">LOG IN</a>
+                <%= link_to "Sign in",signin_path %>
+            <!--<a href="/Default.aspx">LOG IN</a>-->
             </div>
             <br />
             <div id="signupbutton" style="font-family:Arial;" align="center">
-            <a href="/signup/signup.aspx">SIGN UP</a>
+                <%= link_to "Sign up",signup_path %>
+            <!--<a href="/signup/signup.aspx">SIGN UP</a>-->
             </div>
             </td>
             </tr>
