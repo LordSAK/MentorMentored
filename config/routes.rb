@@ -1,5 +1,6 @@
 MentorMentored::Application.routes.draw do
-  get "users/new"
+  resources :users
+  #get "users/new"
   match '/signup', to: 'users#new', via: 'get'
   root "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
