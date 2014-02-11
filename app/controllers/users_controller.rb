@@ -1,24 +1,27 @@
 class UsersController < ApplicationController
-	def show
+  def show
 		@user=User.find(params[:id])
 	end
 
 	def new
+    @students=Students.all
+    @entrepreneurs=Entrepreneurs.all
+    @veterans=Veterans.all
 		@user = User.new
 	end
 
-  	def create
-  		@user = User.new(user_params)    # Not the final implementation!
-    	if @user.save
-    		flash[:success] = "Welcome to the Mentor Mentored!"
-    		redirect_to @user
-    	else
-      		render 'new'
-    	end
+  def create
+    @students=Students.all
+    @entrepreneurs=Entrepreneurs.all
+    @veterans=Veterans.all
+    @user = User.new(user_params)    # Not the final implementation!
+    if @user.save
+    	flash[:success] = "Welcome to the Mentor Mentored!"
+    	redirect_to @user
+    else
+    	render 'new'
+    end
 	end
-
-
-
 
 
 

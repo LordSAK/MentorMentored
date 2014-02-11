@@ -1,27 +1,127 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-    <%= render 'shared/error_messages' %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#SkillType").change(function (){
+      $("#DDL_Students").toggle(this.checked);
+    }).change();
 
-      <%= f.label :First_Name %>
-      <%= f.text_field :First_Name %>
 
-      <%= f.label :Last_Name %>
-      <%= f.text_field :Last_Name %>
+    $("#SkillType1").change(function (){
+    $("#DDL_Entrepreneurs").toggle(this.checked);
+      }).change(); 
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+    $("#SkillType2").change(function (){
+    $("#DDL_Veterans").toggle(this.checked);
+      }).change(); 
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+  });
+</script>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+<h1 class="title">Sign up</h1>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages' %>
+<table align="center" width="100%">
+  <tr>
+   
+    <td align="center">
+      <select ID="DropDownList1" runat="server">
+        <option Text="Title">Title</option>
+        <option Text="Mr." Value="1">Mr.</option>
+        <option Text="Ms." Value="2">Ms.</option>
+        <option Text="Dr." Value="3">Dr.</option>
+      </select>
+    </td>
+   
+   </tr>
+   <tr>
+    <td align="center">
+      <%= f.text_field :First_Name,placeholder: "First Name" %>
+    </td>
+   </tr>
+   <tr>
+    <td align="center">      
+      <%= f.text_field :Last_Name, placeholder: "Last Name" %>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= f.text_field :email, placeholder: "Email" %>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= f.password_field :password, placeholder: "Enter Password" %>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= f.password_field :password_confirmation,placeholder: "Re-Enter Password" %>
+    </td>
+  </tr>
+</table>
+<br/>
+<table align="center" width="70%">
+  <tr>
+    <td align="right" height="35px" style="font-size: large; color: #212121;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I want to be a
+    </td>
+    <td align="center" style="font-size: large; color: #212121;">
+      <%= f.radio_button(:user_Type, "Mentor") %>
+      <%= f.label(:user_Type, "Mentor") %>
+      <br/>
+      <%= f.radio_button(:user_Type, "Mentee") %>
+      <%= f.label(:user_Type, "Mentee") %>
+    </td>
+  </tr>
+</table>
+<table align="center" width="80%" >
+    <tr>
+      <td width="20%">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </td>
+      <td width="25%" align="left" style="vertical-align: bottom; color: #212121;" class="style6">
+          <%= f.check_box(:SkillType,:id => "SkillType") %>
+          <%= f.label(:SkillType, " Students") %>
+      </td>
+      <td width="">
+          <%= f.select(:user_Need,options_from_collection_for_select(@students, "id", "student_mentor_subjects"), {},:id => "DDL_Students") %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <%= f.check_box(:SkillType1,:id => "SkillType1") %>
+        <%= f.label(:SkillType1, " Entrepreneurs") %>
+      </td>
+      <td>
+        <%= f.select :SkillNeed1,options_from_collection_for_select(@entrepreneurs,"id", "entrepreneurs_mentor_subjects"),{},:id => "DDL_Entrepreneurs" %>
+      </td>
+    </tr>
+      <!--  Business-->
+    <tr>
+      <td>
+      </td>
+      <td>
+        <%= f.check_box(:SkillType2,:id => "SkillType2") %>
+        <%= f.label(:SkillType2, " Veterans") %>
+      </td>
+      <td>
+        <%= f.select :skillNeed2,options_from_collection_for_select(@veterans,"id","veteran_mentor_subjects"),{},:id => "DDL_Veterans" %>
+      </td>
+      <!--   veterans-->
+      
+    </tr>
+   
+  </table>
+  <table width="84%">
+    <tr>
+      <td align="center">
+  <%= f.submit "Create my account", :style => "background-color:#33b5e5;border-radius:15px; display:inline-block; color: white; font-family: Raleway; font-size:15px; padding:14px 30px; text-decoration: none; margin-left: 20%; margin-top: 15px; margin-bottom: 15px; text-align:center;" %>
+</td>
+</tr>
+</table>
+<% end %>
