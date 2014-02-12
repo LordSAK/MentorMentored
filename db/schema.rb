@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212005151) do
+ActiveRecord::Schema.define(version: 20140212094749) do
 
   create_table "entrepreneurs", force: true do |t|
     t.string   "entrepreneurs_mentor_subjects"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140212005151) do
     t.string   "SkillType2"
     t.string   "skillNeed2"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
