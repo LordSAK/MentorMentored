@@ -481,3 +481,14 @@ $grayMediumLight: #eaeaea;
   @extend .control-group;
   @extend .error;
 }
+
+.buttonhome
+{
+ height: 100px;
+ width: 200px;
+ font-family: Arial;
+    font-size: large;
+ background-color: transparent;
+ border-style: none;
+ color: white;
+}

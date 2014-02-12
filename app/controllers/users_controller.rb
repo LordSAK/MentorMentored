@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Mentor Mentored!"
-      redirect_to @user
+      redirect_to '/default'
     else
       render 'new'
     end
