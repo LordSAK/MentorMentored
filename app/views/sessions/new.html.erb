@@ -1,0 +1,79 @@
+<% provide(:title, "Sign in") %>
+<h2 class="subtitle">
+  Welcome to Mentor Mentored
+</h2>
+<p class="details">
+  Mentor Mentored helps you connect with<br/>
+  potential mentors and mentees from anywhere
+  </p>
+<%= form_for(:session, url: sessions_path) do |f| %>
+<table width="100%">
+  <tr>
+    <td align="right">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="color: #212121;">
+      <%= f.text_field :email, :placeholder => "Email" %>
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="color: #212121;">
+          <%= f.password_field :password, :placeholder => "Enter Password" %>
+    </td>
+  </tr>
+</table>
+
+<table width="100%">
+  <tr>
+    <td align="center">
+      <%= f.radio_button(:user_Type, "Mentor") %>
+      <%= f.label(:user_Type, "Mentor") %>
+      &nbsp;&nbsp;
+      <%= f.radio_button(:user_Type, "Mentee") %>
+      <%= f.label(:user_Type, "Mentee") %>
+    </td>
+    <td align="center">
+    </td>
+  </tr>
+</table>
+<br/>
+<table style="margin-left:100px;" width="70%">
+  <tr>
+    <td align="right">
+      <%= f.radio_button(:SkillType,:id => "SkillType") %>
+      <%= f.label(:SkillType, " Students") %>
+    </td>
+    <td align="center">
+      <%= f.radio_button(:SkillType1,:id => "SkillType1") %>
+      <%= f.label(:SkillType1, " Entrepreneurs") %>
+    </td>
+    <td align="left">
+      <%= f.radio_button(:SkillType2,:id => "SkillType2") %>
+      <%= f.label(:SkillType2, " Veterans") %>
+    </td>
+    <td align="left">
+    </td>
+  </tr>
+</table>
+
+<table width="83%" >
+  <tr>
+    <td align="center">
+      <div id="loginbutton">
+        <%= f.submit "Sign in", :style => "color:White;background-color:Transparent;border-style:none;font-family:Arial;font-size:Medium;height:35px" %>
+      </div>
+    </td>
+  </tr>
+</table>
+
+    <% end %>
+<table width="100%" align="center">
+  <tr>
+    <td align="center">
+      &nbsp;&nbsp;&nbsp;
+      <p> <%= link_to "Forgot your password!", "#",:style => "color:Gray;font-size:Large;text-decoration:none" %></p>
+    </td>
+  </tr>
+</table>
