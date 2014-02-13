@@ -1,16 +1,16 @@
 <div class="header">
 	<%= image_tag "header.png", :class => "headerimg" %>
-	<% if signed_in? %>
+	<% unless current_user.blank? %>
 	<div id="menu_container" >
         <ul class="sf-menu" id="nav" >
             <li style="margin-left:10%">
-               <%= link_to "usrename", {} %>    
+               <%= link_to current_user.First_Name, {} %>    
             </li>
             <li>
                <%= link_to "notif", {} %>
             </li>
             <li id="logout" style="margin-left:55%;">
-               <%= link_to "Log out", signout_path, method: "delete"  %>
+               <%= link_to "Log out", signout_path, method: :delete  %>
             </li>
         </ul>
 	</div>

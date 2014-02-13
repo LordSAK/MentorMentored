@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src='www.google.com/jsapi'></script>
+  <script src='http://www.google.com/jsapi'></script>
 	 <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "defaults", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= javascript_include_tag "application" %>
+  
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag "style1" %>
   <%= csrf_meta_tags %>
