@@ -83,7 +83,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </td>
       <td width="25%" align="left" style="vertical-align: bottom; color: #212121;" class="style6">
-          <%= f.check_box(:SkillType,:id => "SkillType") %>
+          <%= f.check_box(:SkillType,{:id => "SkillType",:value => "Students"}) %>
           <%= f.label(:SkillType, " Students") %>
       </td>
       <td width="">
@@ -94,7 +94,7 @@
       <td>
       </td>
       <td>
-        <%= f.check_box(:SkillType1,:id => "SkillType1") %>
+        <%= f.check_box(:SkillType1,{:id => "SkillType1", :value =>"Entrepreneurs"} ) %>
         <%= f.label(:SkillType1, " Entrepreneurs") %>
       </td>
       <td>
@@ -106,7 +106,7 @@
       <td>
       </td>
       <td>
-        <%= f.check_box(:SkillType2,:id => "SkillType2") %>
+        <%= f.check_box(:SkillType2,{:id => "SkillType2",:value => "Veterans"}) %>
         <%= f.label(:SkillType2, " Veterans") %>
       </td>
       <td>

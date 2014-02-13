@@ -3,15 +3,19 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def show
-		@user=User.find(params[:id])
-	end
+    @user=User.find(params[:id])
+    @user_name=@user.First_Name
+    if !@user.Last_Name.blank?
+      @user_name += " "+@user.Last_Name
+    end
+  end
 
-	def new
+  def new
     @students=Students.all
     @entrepreneurs=Entrepreneurs.all
     @veterans=Veterans.all
-		@user = User.new
-	end
+    @user = User.new
+  end
 
   def create
     @students=Students.all
@@ -20,12 +24,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       sign_in @user
-    	flash[:success] = "Welcome to the Mentor Mentored!"
-    	redirect_to @user
+      flash[:success] = "Welcome to the Mentor Mentored!"
+      redirect_to @user
     else
-    	render 'new'
+      render 'new'
     end
-	end
+  end
 
   def edit
 
@@ -40,14 +44,12 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
 	private
 
     def user_params
-      params.require(:user).permit(:First_Name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:First_Name,:Last_Name, :email, :password,
+                                   :password_confirmation, :user_type, :SkillType, :user_Need,
+                                   :SkillType1, :SkillNeed1, :SkillType2, :skillNeed2)
     end
 
     def signed_in_user
