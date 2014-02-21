@@ -1,11 +1,32 @@
 MentorMentored::Application.routes.draw do
+  get "educations/create"
+  get "educations/destroy"
+  #get "educations/new"
+  get "professions/create"
+  get "professions/destroy"
+  #get "professions/new"
+  get "communications/create"
+  get "communications/destroy"
+  get "availabilities/create"
+  get "availabilities/destroy"
+  #get "availability/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :availabilities, only: [:create, :destroy]
+  resources :communications, only: [:create, :destroy]
+  resources :professions, only: [:create, :destroy]
+  resources :educations, only: [:create, :destroy]
+  
   root "static_pages#home"
-  match '/signup',  to: 'users#new',        via: 'get'
-  match '/signin',  to: 'sessions#new',     via: 'get'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new',via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/default', to: 'static_pages#default', via: 'get'  
+  match '/availabilities', to: 'availabilities#new', via: 'get'
+  match '/communications', to: 'communications#new', via: 'get'
+  match '/professions', to: 'professions#new', via: 'get'
+  match '/educations', to: 'educations#new', via: 'get'
+  #match '/availabilities/new', to: 'availability#new', via: 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
