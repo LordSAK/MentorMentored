@@ -11,10 +11,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212094749) do
+ActiveRecord::Schema.define(version: 20140221101158) do
+
+  create_table "availabilities", force: true do |t|
+    t.integer  "UserID"
+    t.string   "UserDays"
+    t.string   "TimeFrom"
+    t.string   "TimeTo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "availabilities", ["UserID", "created_at"], name: "index_availabilities_on_UserID_and_created_at"
+
+  create_table "communications", force: true do |t|
+    t.integer  "UserID"
+    t.string   "CommunicationMode"
+    t.string   "CommunicationDetail"
+    t.string   "Private?"
+    t.string   "Preferred"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "communications", ["UserID", "created_at"], name: "index_communications_on_UserID_and_created_at"
+
+  create_table "days", force: true do |t|
+    t.string   "days"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "educations", force: true do |t|
+    t.string   "UserID"
+    t.string   "SchoolName"
+    t.string   "SchoolFrom"
+    t.string   "SchoolTo"
+    t.string   "Private?"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "entrepreneurs", force: true do |t|
     t.string   "entrepreneurs_mentor_subjects"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "professions", force: true do |t|
+    t.string   "UserID"
+    t.string   "Designation"
+    t.string   "Company"
+    t.string   "Job_From"
+    t.string   "Job_To"
+    t.string   "Private?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Mentor Mentored!"
-      redirect_to '/default'
+      redirect_to '/availabilities'
     else
       render 'new'
     end
@@ -48,9 +48,8 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:First_Name,:Last_Name, :email, :password,
-                                   :password_confirmation, :user_Type, :SkillType, :user_Need,
-                                   :SkillType1, :SkillNeed1, :SkillType2, :skillNeed2,
-                                   :user_City, :user_State, :user_Zip)
+                                   :password_confirmation, :user_type, :SkillType, :user_Need,
+                                   :SkillType1, :SkillNeed1, :SkillType2, :skillNeed2)
     end
 
     def signed_in_user

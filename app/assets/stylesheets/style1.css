@@ -299,7 +299,7 @@ ul#nav ul li a:hover, ul#nav ul li a:focus
 	display:inline-block;
 	color: white;
 	font-family: Raleway;
-	font-size:25px;
+	font-size:3px;
 	font-weight:bold;
 	padding:14px 30px;
 	text-decoration: none;
@@ -307,6 +307,18 @@ ul#nav ul li a:hover, ul#nav ul li a:focus
     margin-top: 15px;
     margin-bottom: 15px;
     text-align:center;
+}
+.buttonsSmall
+{
+
+}
+.buttonSearch
+{
+	background-color: transparent;
+	color: white;
+	font-size: medium;
+	border-style: none; 
+	font-family: seouge ui light;
 }
 .button1{
 	background-color:#33b5e5;

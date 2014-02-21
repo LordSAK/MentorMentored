@@ -1,0 +1,86 @@
+<h2 class="subtitle">
+   My Contact Information
+</h2>
+<%= form_for (:Communication) do |f| %>
+<table>
+	  <tr>
+		 <td>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= f.check_box(:chkbx_Phone, { :id => "Phone", :value => "Phone"}) %>
+            <%= label_tag "Phone" %>
+	     </td>
+	     <td>
+            <%= f.text_field :tf_Phone %>
+            <%= f.check_box(:chkbx_Phone_Public, { :id => "Public", :value => "Public"}) %>
+            <%= label_tag "Public" %>
+            <%= f.radio_button(:rb_Phone_Preferred, "Preferred") %>
+      		<%= label_tag "Preferred" %> 
+	     </td>
+	  </tr>
+	  <tr>
+         <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= f.check_box(:chkbx_Email, { :id => "Email", :value => "Email" }) %>
+            <%= label_tag "Email" %>
+         </td>
+         <td>
+            <%= f.text_field :tf_Email %>
+            <%= f.check_box(:chkbx_Email_Public, { :id => "Public", :value => "Public" }) %>
+            <%= label_tag "Punlic" %>
+            <%= f.radio_button(:rb_Email_Preferred, "Preferred") %>
+      		<%= label_tag "Preferred" %> 
+         </td>
+	  </tr>
+	  <tr>
+         <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= f.check_box(:chkbx_Skype, { :id => "Skype", :value => "Skype" }) %>
+            <%= label_tag "Skype" %>
+         </td>
+         <td>
+            <%= f.text_field :tf_stype %>
+            <%= f.check_box(:chkbx_Skype_Public, { :id => "Public", :value => "Public" }) %>
+            <%= label_tag "Punlic" %>
+            <%= f.radio_button(:rb_Skype_Preferred, "Preferred") %>
+      		<%= label_tag "Preferred" %> 
+         </td>
+	  </tr>
+	  <tr>
+         <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= f.check_box(:chkbx_Website, { :id => "Website", :value => "Website" }) %>
+            <%= label_tag "Website" %>
+         </td>
+         <td>
+            <%= f.text_field :tf_Website %>
+            <%= f.check_box(:chkbx_Website_Public, { :id => "Public", :value => "Public" }) %>
+            <%= label_tag "Punlic" %>
+            <%= f.radio_button(:rb_Website_Preferred, "Preferred") %>
+      		<%= label_tag "Preferred" %> 
+         </td>
+	  </tr>
+	  <tr>
+         <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= f.check_box(:chkbx_Twitter, { :id => "Twitter", :value => "Twitter" }) %>
+            <%= label_tag "Twitter" %>
+         </td>
+         <td>
+            <%= f.text_field :tf_Twitter %>
+            <%= f.check_box(:chkbx_Twitter_Public, { :id => "Public", :value => "Public" }) %>
+            <%= label_tag "Punlic" %>
+            <%= f.radio_button(:rb_Twitter_Preferred, "Preferred") %>
+      		<%= label_tag "Preferred" %> 
+         </td>
+	  </tr>
+</table>
+<table width="92%">
+      <tr>
+         <td align="center">
+         	<div class="button" style="margin-left:60px;">
+                <%= f.submit "Next", { :class => "buttonSearch"} %>
+            </div>
+         </td>			
+      </tr>
+</table>
+<% end %>

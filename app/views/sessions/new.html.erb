@@ -42,16 +42,16 @@
 <table style="margin-left:100px;" width="70%">
   <tr>
     <td align="right">
-      <%= f.radio_button(:SkillType,"Students") %>
+      <%= f.radio_button(:SkillType,:id => "SkillType") %>
       <%= f.label(:SkillType, " Students") %>
     </td>
     <td align="center">
-      <%= f.radio_button(:SkillType,"Entrepreneurs") %>
-      <%= f.label(:SkillType, " Entrepreneurs") %>
+      <%= f.radio_button(:SkillType1,:id => "SkillType1") %>
+      <%= f.label(:SkillType1, " Entrepreneurs") %>
     </td>
     <td align="left">
-      <%= f.radio_button(:SkillType,"Veterans") %>
-      <%= f.label(:SkillType, " Veterans") %>
+      <%= f.radio_button(:SkillType2,:id => "SkillType2") %>
+      <%= f.label(:SkillType2, " Veterans") %>
     </td>
     <td align="left">
     </td>

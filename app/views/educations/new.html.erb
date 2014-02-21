@@ -1,0 +1,29 @@
+<h2 class = "subtitle">
+	Education
+</h2>
+<%= form_for (:Educations) do |f| %>
+<table width="100%">
+      <tr style = "text-align:center;">
+         <td>
+            <%= f.text_field :tf_Degree,placeholder: "Degree" %>
+         </td>
+      </tr>
+      <tr style = "text-align:center;">
+         <td>
+            From
+            <%= f.select :fromyear, (1995..Time.now.year).to_a, :include_blank => {:year => "Select year"} %>
+            to
+            <%= f.select :toyear, (1995..Time.now.year).to_a, :include_blank => {:year => "Select year"} %>
+         </td>
+      </tr>
+</table>
+<table width="92%">
+      <tr>
+         <td align="center">
+         	<div class="button" style="margin-left:60px;">
+                <%= f.submit "Next", { :class => "buttonSearch"} %>
+            </div>
+         </td>
+      </tr>
+</table>
+<% end %>
