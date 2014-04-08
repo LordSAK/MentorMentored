@@ -2,6 +2,7 @@
     Requests I have Sent 
 </h1>
 <%= form_for :request_I_have_sent, :url => { :method => :get, :action => :request_I_have_sent } do |f| %>
+<% if !@user.nil? %>
 <% @user.each do |u| %>
 <table align="center" width="100%" style=" margin-top: 30px; margin-bottom:30px">
     <tr>
@@ -84,6 +85,7 @@
         </td>
     </tr>
 </table>
+<% end %>
 <% end %>
 <table width="25%" align="center" style="margin-left:240px" >
 <tr>
