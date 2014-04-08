@@ -82,7 +82,7 @@
                     </td>
                     <td align= "center">
                         <div class="button">
-                            <%= button_to "Ignore", '/ignore?id='+u.RequestFrom, { method: :post, :class => "buttonblck" } %>
+                            <%= button_to "Ignore", '/ignore?id='+u.RequestFrom.to_s, { method: :post, :class => "buttonblck" } %>
                         </div> 
                     </td>
                 </tr>
