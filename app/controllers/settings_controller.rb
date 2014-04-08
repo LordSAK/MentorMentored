@@ -7,8 +7,8 @@ class SettingsController < ApplicationController
     @students=Students.all
     @entrepreneurs=Entrepreneurs.all
     @veterans=Veterans.all
-    @user_profession=Profession.where(:UserID => current_user.id.to_s)
-    @user_education=Education.where(:UserID => current_user.id.to_s)
+    @user_profession=Profession.where(:UserID => current_user.id)
+    @user_education=Education.where(:UserID => current_user.id)
     @user_communication=Communication.where(:UserID => current_user.id)
     
     #requestfrom.first.update_attribute(:IsApproved, "2")
@@ -18,7 +18,7 @@ class SettingsController < ApplicationController
     
         @blah = params[:ChkBx_Profession]
   if params[:ChkBx_Profession] == "1"
-    Profession.delete_all(:UserID => current_user.id.to_s)
+    Profession.delete_all(:UserID => current_user.id)
     if !params[:tf_designation].blank?
         @desig = params[:tf_designation]
         @comp = params[:tf_company]
@@ -54,7 +54,7 @@ class SettingsController < ApplicationController
     end  
     end
   else
-        Profession.delete_all(:UserID => current_user.id.to_s)
+        Profession.delete_all(:UserID => current_user.id)
     if !params[:tf_designation].blank?
         @desig = params[:tf_designation]
         @comp = params[:tf_company]
@@ -92,7 +92,7 @@ class SettingsController < ApplicationController
   end  
     @blah2 = params[:ChkBx_Education]
   if params[:ChkBx_Education].to_s == "1"
-    Education.delete_all(:UserID => current_user.id.to_s)
+    Education.delete_all(:UserID => current_user.id)
     if !params[:tf_education].blank?
         @education = params[:tf_education]
         @fromeducation = params[:tf_fromeducation]
@@ -122,7 +122,7 @@ class SettingsController < ApplicationController
     end
     end
   else
-    Education.delete_all(:UserID => current_user.id.to_s)
+    Education.delete_all(:UserID => current_user.id)
     if !params[:tf_education].blank?
         @education = params[:tf_education]
         @fromeducation = params[:tf_fromeducation]
@@ -274,8 +274,8 @@ class SettingsController < ApplicationController
       puts "Hassan"
       User.delete( user.id )
       Availability.delete_all(:UserID => user.id)
-      Profession.delete_all(:UserID => user.id.to_s)
-      Education.delete_all(:UserID => user.id.to_s)
+      Profession.delete_all(:UserID => user.id)
+      Education.delete_all(:UserID => user.id)
       Communication.delete_all(:UserID => user.id)
     end
     redirect_to root_path
@@ -290,8 +290,8 @@ class SettingsController < ApplicationController
     @students=Students.all
     @entrepreneurs=Entrepreneurs.all
     @veterans=Veterans.all
-    @user_profession=Profession.where(:UserID => current_user.id.to_s)
-  	@user_education=Education.where(:UserID => current_user.id.to_s)
+    @user_profession=Profession.where(:UserID => current_user.id)
+  	@user_education=Education.where(:UserID => current_user.id)
     @user_communication=Communication.where(:UserID => current_user.id)
   end
 
