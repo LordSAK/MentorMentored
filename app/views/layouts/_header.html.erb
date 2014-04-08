@@ -11,7 +11,7 @@
                <%= link_to name, profile_path, method: "get" %>    
             </li>
             <li>
-              <% count = Userrequest.where('"RequestTo" = ? AND "IsApproved" = ?', current_user.id, 0).count %>
+              <% count = Userrequest.where('"RequestTo" = ? AND "IsApproved" = ?', current_user.id.to_s, "0").count %>
                <%= link_to count, pendingrequest_path, method: "get" %>
             </li>
             <li id="logout" style="margin-left:55%;">
