@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324122756) do
+ActiveRecord::Schema.define(version: 20140408101222) do
 
   create_table "availabilities", force: true do |t|
     t.integer  "UserID"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140324122756) do
   end
 
   create_table "educations", force: true do |t|
-    t.string   "UserID"
+    t.integer  "UserID",     limit: 255
     t.string   "SchoolName"
     t.string   "SchoolFrom"
     t.string   "SchoolTo"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140324122756) do
   end
 
   create_table "professions", force: true do |t|
-    t.string   "UserID"
+    t.integer  "UserID",      limit: 255
     t.string   "Designation"
     t.string   "Company"
     t.string   "Job_From"
