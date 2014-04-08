@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def create
        
-     @userrequest = Userrequest.new( :RequestFrom => current_user.id, :RequestTo => params[:id] , :IsApproved=> "0", :SkillType => "" )
+     @userrequest = Userrequest.new( :RequestFrom => current_user.id.to_s, :RequestTo => params[:id] , :IsApproved=> "0", :SkillType => "" )
      @userrequest.save
 
      redirect_to '/searching'
