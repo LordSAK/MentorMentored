@@ -2,6 +2,7 @@
     Pending Requests
 </h1>
 <%= form_for :pending_request, :url => { :method => :get, :action => :pending_request } do |f| %>
+<% if !@user.nil? %>
 <% @user.each do |u| %>
 <table align="center" width="100%" style=" margin-top: 30px; margin-bottom:30px">
     <tr>
@@ -89,6 +90,7 @@
         </td>
     </tr>
 </table>
+<% end %>
 <% end %>
 <table width="25%" align="center" style="margin-left:240px" >
 <tr>
