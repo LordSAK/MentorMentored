@@ -20,7 +20,7 @@ class SearchController < ApplicationController
        @user = User.find(:all,:conditions=>['"user_Need" = ? ',params[:Interest]])   
     #designation
     elsif (params[:tf_Zip] == "") and ( !params[:Interest].blank? or params[:Interest] == "1" ) and ( !params[:tf_Designation].blank? or params[:tf_Designation] !="" ) and (params[:tf_Company] =="")
-       @user_join = Profession.joins(:user).where('"professions"."Designation"' => params[:tf_Designation])
+       @user_join = Profession.joins(:user).where('"professions"."Designation" =?', params[:tf_Designation])
     #company
     elsif (params[:tf_Zip] == "") and ( !params[:Interest].blank? or params[:Interest] == "1" ) and (params[:tf_Designation] == "") and ( !params[:tf_Company].blank? or params[:tf_Company] !="" )
        @user_join = Profession.joins(:user).where('"professions"."Company"' => params[:tf_Company])
