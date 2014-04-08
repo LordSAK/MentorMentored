@@ -28,13 +28,13 @@ class StaticPagesController < ApplicationController
   end
 
   def pending_request
-    @user = Userrequest.select(:RequestFrom).where('"RequestTo" = ? AND "IsApproved" = ?', current_user.id, "0")
+    @user = Userrequest.select('"RequestFrom"').where('"RequestTo" = ? AND "IsApproved" = ?', current_user.id, "0")
   end
 
   def request_I_have_sent
-    @user = Userrequest.select(:RequestTo).where('"RequestFrom" = ? AND "IsApproved" = ?', current_user.id ,"0")
+    @user = Userrequest.select('"RequestTo"').where('"RequestFrom" = ? AND "IsApproved" = ?', current_user.id ,"0")
   end
   def connections
-  	@user = Userrequest.select(:RequestFrom).where('"RequestTo" = ? AND "IsApproved" = ?', current_user.id, "1")
+  	@user = Userrequest.select('"RequestFrom"').where('"RequestTo" = ? AND "IsApproved" = ?', current_user.id, "1")
   end
 end
