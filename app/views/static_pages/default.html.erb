@@ -2,12 +2,12 @@
 <tr>
    <td style="color: #212121;">
  <div class="button">
-      <%= button_to "Search", {}, {:class => "buttonhome" } %>
+      <%= button_to "Search", '/searching', {method: :get, :class => "buttonhome"} %>
  </div>
    </td>
    <td style="color: #212121;">
  <div class="button">
-      <%= button_to "Pending Request", {}, {:class => "buttonhome" } %>
+      <%= button_to "Pending Request", '/pendingrequest', { method: :get, :class => "buttonhome" } %>
  </div>
    </td>
 </tr>
@@ -15,12 +15,12 @@
 <tr>
    <td style="color: #212121;">
     <div class="button">
-      <%= button_to "Connections", {}, {:class => "buttonhome" } %>
+      <%= button_to "Connections", '/connection', { method: :get, :class => "buttonhome" } %>
  </div>
     </td>
    <td style="color: #212121;">
     <div class="button">
-      <%= button_to "Profile", {}, {:class => "buttonhome" } %>
+      <%= button_to "Profile", '/profile', { method: :get, :class => "buttonhome" } %>
  </div>
     </td>
 </tr>
@@ -28,12 +28,13 @@
 <tr>
    <td style="color: #212121;">
     <div class="button">
-      <%= button_to "Settings", {}, {:class => "buttonhome" } %>
+      
+      <%= button_to "Settings", '/settings', {method: :get, :class => "buttonhome"} %>
  </div>
    </td>
    <td style="color: #212121;">
     <div class="button">
-      <%= button_to "Request I have Sent", {}, {:class => "buttonhome" } %>
+      <%= button_to "Request I have Sent", '/sentrequest', { method: :get, :class => "buttonhome" } %>
  </div>
    </td>
 </tr>

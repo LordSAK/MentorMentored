@@ -1,5 +1,21 @@
 <% provide(:title, 'Sign up') %>
+    <script type="text/javascript">
+$("#signup").submit(function ( event ) {
+alert("hassan");
+    var mentor = $('#rb_mentor').val();
+    var mentee = $('#rb_mentee').val();
+    var hasError = false;
 
+    if((mentor == 0) || (mentee == 0)){
+        alert("Please select atleast one box")
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+});
+</script>
 <script type="text/javascript">
   $(document).ready(function () {
     $("#SkillType").change(function (){
@@ -20,7 +36,7 @@
 
 <h1 class="title">Sign up</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user,:html => {:id => "signup"}) do |f| %>
 <%= render 'shared/error_messages' %>
 <table align="center" width="100%">
   <tr>
@@ -69,10 +85,10 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I want to be a
     </td>
     <td align="center" style="font-size: large; color: #212121;">
-      <%= f.radio_button(:user_Type, "Mentor") %>
+      <%= f.radio_button :user_Type, "Mentor", :id => "rb_mentor" %>
       <%= f.label(:user_Type, "Mentor") %>
       <br/>
-      <%= f.radio_button(:user_Type, "Mentee") %>
+      <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
       <%= f.label(:user_Type, "Mentee") %>
     </td>
   </tr>

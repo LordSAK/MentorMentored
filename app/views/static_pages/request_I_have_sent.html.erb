@@ -1,0 +1,97 @@
+<h1 class ="title">
+    Requests I have Sent 
+</h1>
+<%= form_for :request_I_have_sent, :url => { :method => :get, :action => :request_I_have_sent } do |f| %>
+<% @user.each do |u| %>
+<table align="center" width="100%" style=" margin-top: 30px; margin-bottom:30px">
+    <tr>
+        <% uzrname = User.find(u.RequestTo) %>
+        <td width="30%" style="background-color: #ccdbe0;" class="style1">
+                        <%= f.label(:username, uzrname.First_Name + " " + uzrname.Last_Name, :style => "color:blue;" ) %>
+        </td>
+        <td width="70%" style="background-color:#33b5e5;" >
+            <table style="color:white;">
+                <% @user_communication = Communication.where('"UserID" = ?',u.RequestTo) %>
+                <% @user_communication.each do |c| %>
+                <tr>
+                    <td>
+                        <%= f.label(:communication, c.CommunicationMode ) %>
+                    </td>
+                    <td>
+                        :<%= f.label(:communication, c.CommunicationDetail ) %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+            <hr>
+            <table style="color:white;">
+                <% user_availability = Availability.where('"UserID" = ?',u.RequestTo) %>
+                <% user_availability.each do |a| %>
+                <tr>
+                    <td>
+                        <%= f.label(:userdays, a.UserDays ) %>
+                    </td>
+                    <td></td>
+                    <td>
+                        from <%= f.label(:timefrom, a.TimeFrom ) %>
+                    </td>
+                    <td></td>
+                    <td>
+                        to <%= f.label(:timeto, a.TimeTo ) %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+            <hr>
+            <table style="color:white;">
+                <% user_education = Education.where('"UserID" = ?', u.RequestTo) %>
+                <% user_education.each do |e| %>
+                <tr>
+                    <td>
+                        <%= f.label(:schoolname, e.SchoolName ) %>
+                    </td>
+                    <td></td>
+                    <td>
+                        Class of <%= f.label(:schoolto, e.SchoolTo ) %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+            <hr>
+            <table style="color:white;">
+                <% user_profession = Profession.where('"UserID" = ?', u.RequestTo) %>
+                <% user_profession.each do |p| %>
+                <tr>
+                    <td>
+                        <%= f.label(:designation, p.Designation ) %> since 
+                    </td>
+                    <td></td>
+                    <td>
+                         <%= f.label(:schoolto, p.Job_To ) %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <div class="button">
+                            <%= button_to "Cancel", '/default', { method: :get, :class => "buttonblck" } %>
+                        </div> 
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<% end %>
+<table width="25%" align="center" style="margin-left:240px" >
+<tr>
+        <td>
+            <div class="button">
+                    <%= link_to "Back", :back, { :class => "buttonBack"} %>
+            </div>
+        </td>
+    </tr>
+</table>
+<% end %>

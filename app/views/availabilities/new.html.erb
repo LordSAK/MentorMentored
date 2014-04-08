@@ -1,20 +1,20 @@
 <h2 class="subtitle">
    My Schedule
-   <% if !@blah.nil? %>
-      <%= @blah.to_s %>
-      <% end %>
 </h2>
-<%= form_for(:Availability) do |f| %>
+<%= form_for(:Availability, :html => { :id => "availability" }) do |f| %>
 <table align="center" width="100%">
       <tr>
-         <td>
+          <td width="4%">
+
+          </td>
+          <td>
             <div style="color:black; font-weight: bold;">
             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <%= f.check_box(:Monday,{:id => "Monday",:value => "Monday"}) %>
                 <%= label_tag "Monday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td  width="40%">
             <div id="MondayDiv">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :mondayFrom,options_for_select([
@@ -52,17 +52,23 @@
 
                  <%= f.select :ddl_MonToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_MonToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_mon" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       <tr>
-         <td>
+          <td>
+
+          </td>
+          <td>
             <div style="color:black;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<%= f.check_box(:Tuesday,{:id => "Tuesday",:value => "Tuesday"}) %>
                 <%= label_tag "Tuesday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td>
             <div id="TuesdayDiv">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :tuesdayFrom,options_for_select([
@@ -100,17 +106,23 @@
 
                  <%= f.select :ddl_TueToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_TueToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_tue" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       <tr>
-         <td>
+          <td>
+
+          </td>
+          <td>
             <div style="color:black;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<%= f.check_box(:Wednesday,{:id => "Wednesday",:value => "Wednesday"}) %>
                 <%= label_tag "Wednesday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td>
             <div id="WednesdayDiv">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :wednesdayFrom,options_for_select([
@@ -148,17 +160,23 @@
 
                  <%= f.select :ddl_WedToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_MonToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_wed" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       <tr>
-         <td>
+          <td>
+
+          </td>
+          <td>
             <div style="color:black;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<%= f.check_box(:Thursday,{:id => "Thursday",:value => "Thursday"}) %>
                 <%= label_tag "Thursday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td>
             <div id="ThursdayDiv">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :thursdayFrom,options_for_select([
@@ -196,17 +214,23 @@
 
                  <%= f.select :ddl_ThurToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_ThurToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_thurs" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       <tr>
-         <td>
+          <td>
+
+          </td>
+          <td>
             <div style="color:black;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<%= f.check_box(:Friday,{:id => "Friday",:value => "Friday"}) %>
                 <%= label_tag "Friday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td>
             <div id="FridayDiv">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :fridayFrom,options_for_select([
@@ -244,17 +268,23 @@
 
                  <%= f.select :ddl_FriToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_FriToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_fri" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       <tr>
-         <td>
+          <td>
+
+          </td>
+          <td>
             <div style="color:black;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<%= f.check_box(:Saturday,{:id => "Saturday",:value => "Saturday"}) %>
                 <%= label_tag "Saturday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td>
             <div>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :saturdayFrom,options_for_select([
@@ -292,17 +322,23 @@
 
                  <%= f.select :ddl_SatToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_SatToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_sat" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       <tr>
-         <td>
+          <td>
+
+          </td>
+          <td>
             <div style="color:black;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<%= f.check_box(:Sunday,{:id => "Sunday",:value => "Sunday"}) %>
                 <%= label_tag "Sunday" %>
             </div>
-         </td>
-         <td>
+          </td>
+          <td>
             <div  id="SundayDiv">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <%= f.select :sundayFrom,options_for_select([
@@ -340,7 +376,10 @@
 
                  <%= f.select :ddl_SunToAMPM ,options_for_select([["AM","AM"],["PM","PM"]]), {}, :id => "ddl_SunToAMPM"  %>
             </div>
-         </td>
+          </td>
+          <td width="28%">
+              <label for="validation" id="errormessage_sun" visible="false" style="font-size:60%; color:red;"></label>
+          </td>
       </tr>
       
 </table>
@@ -352,5 +391,147 @@
                   </div>
       	       </td>
             </tr>
-      </table>
-<% end %> 
+</table>
+<% end %>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var monday_from = $('#DDL_TimeFromMon').val();
+    var monday_to = $('#DDL_TimeToMon').val();
+    var hasError = false;
+    if($('#Monday').is(':checked') && (monday_from >= monday_to))
+    {
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_mon").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var tuesday_from = $('#DDL_TimeFromTue').val();
+    var tuesday_to = $('#DDL_TimeToTue').val();
+    var hasError = false;
+
+    if($('#Tuesday').is(':checked') && (tuesday_from >= tuesday_to))
+    {
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_tue").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var wednesday_from = $('#DDL_TimeFromWed').val();
+    var wednesday_to = $('#DDL_TimeToWed').val();
+    var hasError = false;
+
+    if($('#Wednesday').is(':checked') && (wednesday_from >= wednesday_to)){
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_wed").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var thursday_from = $('#DDL_TimeFromThur').val();
+    var thursday_to = $('#DDL_TimeToThur').val();
+    var hasError = false;
+
+    if($('#Thursday').is(':checked') && (thursday_from >= thursday_to)){
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_thurs").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var friday_from = $('#DDL_TimeFromFri').val();
+    var friday_to = $('#DDL_TimeToFri').val();
+    var hasError = false;
+
+    if($('#Friday').is(':checked') && (friday_from >= friday_to)){
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_fri").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var saturday_from = $('#DDL_TimeFromSat').val();
+    var saturday_to = $('#DDL_TimeToSat').val();
+    var hasError = false;
+
+    if($('#Saturday').is(':checked') && (saturday_from >= saturday_to)){
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_sat").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+<script type="text/javascript">
+  $("#availability").submit(function ( event ) {
+  
+    var sunday_from = $('#DDL_TimeFromSun').val();
+    var sunday_to = $('#DDL_TimeToSun').val();
+    var hasError = false;
+
+    if($('#Sunday').is(':checked') && (sunday_from >= sunday_to)){
+        //alert("Hassan");
+        //alert("from "+monday_from+"and to "+ monday_to + "Time From Should be less then Time To")
+        var message =  $("#errormessage_sun").html("Time From Should be less then Time To");
+        message.show();
+        hasError = true;
+    }
+
+    if(hasError){
+        event.preventDefault();
+    }
+  });
+</script>
+

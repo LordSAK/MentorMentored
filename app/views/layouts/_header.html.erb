@@ -3,11 +3,16 @@
 	<% if signed_in? %>
 	<div id="menu_container" >
         <ul class="sf-menu" id="nav" >
-            <li style="margin-left:10%">
-               <%= link_to "usrename", {} %>    
+            <li style="margin-left:10%;">
+              <% name=current_user.First_Name %>
+              <% if !current_user.Last_Name.blank? %>
+                <% name+= " " +current_user.Last_Name %>
+                <% end %> 
+               <%= link_to name, profile_path, method: "get" %>    
             </li>
             <li>
-               <%= link_to "notif", {} %>
+              <% count = Userrequest.where('RequestTo = ? AND IsApproved = ?', current_user.id, "0").count %>
+               <%= link_to count, pendingrequest_path, method: "get" %>
             </li>
             <li id="logout" style="margin-left:55%;">
                <%= link_to "Log out", signout_path, method: "delete"  %>

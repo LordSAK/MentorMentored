@@ -1,3 +1,42 @@
+    <script type="text/javascript">
+$("#signin").submit(function ( event ) {
+    var hasError = false;
+    if($('#rb_mentor').is(':checked') || $('#rb_mentee').is(':checked'))
+    {
+      alert("it's checked"); 
+      hasError = false;
+    }
+    else
+    {
+         var message =  $("#errormessage1").html("Please Select");
+         message.show();
+         hasError = true;
+    } 
+    if(hasError){
+        event.preventDefault();
+    }
+});
+</script>
+    <script type="text/javascript">
+$("#signin").submit(function ( event ) {
+    var hasError = false;
+    if($('#SkillType').is(':checked') || $('#SkillType1').is(':checked') || $('#SkillType2').is(':checked'))
+    {
+      alert("network checked"); 
+      hasError = false;
+    }
+    else
+    {
+         var message1 =  $("#errormessage2").html("Please Select");
+         message1.show();
+         hasError = true;
+    } 
+    if(hasError){
+        event.preventDefault();
+    }
+});
+</script>
+
 <% provide(:title, "Sign in") %>
 <h2 class="subtitle">
   Welcome to Mentor Mentored
@@ -6,41 +45,50 @@
   Mentor Mentored helps you connect with<br/>
   potential mentors and mentees from anywhere
   </p>
-<%= form_for(:session, url: sessions_path) do |f| %>
+<%= form_for(:session, url: sessions_path,:html => {:id => "signin"}) do |f| %>
 <table width="100%">
   <tr>
-    <td align="right">
+    <td align="center">
+      <%= f.label(:error, "", :id => "errormessage") %>
     </td>
   </tr>
   <tr>
     <td align="center" style="color: #212121;">
-      <%= f.text_field :email, :placeholder => "Email" %>
+      <%= f.text_field :email, :placeholder => "Email", :id => "tf_email" %>
       <br/>
     </td>
   </tr>
   <tr>
     <td align="center" style="color: #212121;">
-          <%= f.password_field :password, :placeholder => "Enter Password" %>
+          <%= f.password_field :password, :placeholder => "Enter Password", :id => "tf_password" %>
     </td>
   </tr>
 </table>
 
 <table width="100%">
   <tr>
-    <td align="center">
-      <%= f.radio_button(:user_Type, "Mentor") %>
+    <td width="30%"></td>
+    <td align="right">
+      <%= f.radio_button :user_Type, "Mentor", :id => "rb_mentor", :value => "false" %>
       <%= f.label(:user_Type, "Mentor") %>
       &nbsp;&nbsp;
-      <%= f.radio_button(:user_Type, "Mentee") %>
+      <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
       <%= f.label(:user_Type, "Mentee") %>
     </td>
-    <td align="center">
+    <td align="center" width="38%">
+      <label for="validation" id="errormessage1" visible="false"></label> 
     </td>
   </tr>
 </table>
+<table>
+<tr>
+
+</tr>
+</table>
 <br/>
-<table style="margin-left:100px;" width="70%">
+<table style="margin-left:100px;" width="80%" id="network" border="1">
   <tr>
+    <td width="13%"></td>
     <td align="right">
       <%= f.radio_button(:SkillType,:id => "SkillType") %>
       <%= f.label(:SkillType, " Students") %>
@@ -53,7 +101,8 @@
       <%= f.radio_button(:SkillType2,:id => "SkillType2") %>
       <%= f.label(:SkillType2, " Veterans") %>
     </td>
-    <td align="left">
+    <td align="center" width="28%">
+      <label for="validation" id="errormessage2" visible="false"></label> 
     </td>
   </tr>
 </table>

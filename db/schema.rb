@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221101158) do
+ActiveRecord::Schema.define(version: 20140324122756) do
 
   create_table "availabilities", force: true do |t|
     t.integer  "UserID"
@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(version: 20140221101158) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "communications", ["UserID", "created_at"], name: "index_communications_on_UserID_and_created_at"
 
   create_table "days", force: true do |t|
     t.string   "days"
@@ -71,6 +69,15 @@ ActiveRecord::Schema.define(version: 20140221101158) do
 
   create_table "students", force: true do |t|
     t.string   "student_mentor_subjects"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "userrequests", force: true do |t|
+    t.string   "RequestFrom"
+    t.string   "RequestTo"
+    t.string   "IsApproved"
+    t.string   "SkillType"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

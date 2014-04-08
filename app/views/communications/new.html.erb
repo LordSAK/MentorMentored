@@ -1,78 +1,106 @@
 <h2 class="subtitle">
    My Contact Information
 </h2>
-<%= form_for (:Communication) do |f| %>
-<table>
-	  <tr>
-		 <td>
+<%= form_for(:Communication, :html => { :id => "communication_form" }) do |f| %>
+<table align="center" width="100%">
+      <tr>
+         <td>
+         
+         </td>
+         <td></td>
+         <td>
+            <label for="validation_all" id="errormessage" visible="false" style="font-size:60%; color:red;"></label>
+         </td>
+      </tr>
+	   <tr>
+         <td width="6%">
+
+         </td>
+		   <td>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Phone, { :id => "Phone", :value => "Phone"}) %>
+            <%= f.check_box(:chkbx_Phone, { :id => "cb_Phone", :value => "false" }) %>
             <%= label_tag "Phone" %>
-	     </td>
-	     <td>
-            <%= f.text_field :tf_Phone %>
+	      </td>
+	      <td>
+            <%= f.text_field :tf_Phone, :id => "tb_phone" %>
             <%= f.check_box(:chkbx_Phone_Public, { :id => "Public", :value => "Public"}) %>
             <%= label_tag "Public" %>
             <%= f.radio_button(:rb_Phone_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %> 
-	     </td>
-	  </tr>
-	  <tr>
+      		<%= label_tag "Preferred" %>
+            <br/>
+            <label for="validation_phone" id="errormessage_phone" visible="false" style="font-size:60%; color:red;"></label> 
+	      </td>
+	   </tr>
+	   <tr>
+         <td>
+
+         </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Email, { :id => "Email", :value => "Email" }) %>
+            <%= f.check_box(:chkbx_Email, { :id => "cb_Email", :value => "false" }) %>
             <%= label_tag "Email" %>
          </td>
          <td>
-            <%= f.text_field :tf_Email %>
+            <%= f.text_field :tf_Email, :id => "tb_email" %>
             <%= f.check_box(:chkbx_Email_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Punlic" %>
+            <%= label_tag "Public" %>
             <%= f.radio_button(:rb_Email_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %> 
+      		<%= label_tag "Preferred" %>
+            <br/>
+            <label for="validation_email" id="errormessage_email" visible="false" style="font-size:60%; color:red;"></label>  
          </td>
-	  </tr>
-	  <tr>
+	   </tr>
+	   <tr>
+         <td>
+
+         </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Skype, { :id => "Skype", :value => "Skype" }) %>
+            <%= f.check_box(:chkbx_Skype, { :id => "cb_Skype", :value => "Skype" }) %>
             <%= label_tag "Skype" %>
          </td>
          <td>
             <%= f.text_field :tf_stype %>
             <%= f.check_box(:chkbx_Skype_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Punlic" %>
+            <%= label_tag "Public" %>
             <%= f.radio_button(:rb_Skype_Preferred, "Preferred") %>
       		<%= label_tag "Preferred" %> 
          </td>
-	  </tr>
-	  <tr>
+	   </tr>
+	   <tr>
+         <td>
+
+         </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Website, { :id => "Website", :value => "Website" }) %>
+            <%= f.check_box(:chkbx_Website, { :id => "cb_Website", :value => "Website" }) %>
             <%= label_tag "Website" %>
          </td>
          <td>
             <%= f.text_field :tf_Website %>
             <%= f.check_box(:chkbx_Website_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Punlic" %>
+            <%= label_tag "Public" %>
             <%= f.radio_button(:rb_Website_Preferred, "Preferred") %>
       		<%= label_tag "Preferred" %> 
          </td>
-	  </tr>
-	  <tr>
+	   </tr>
+	   <tr>
+         <td>
+
+         </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Twitter, { :id => "Twitter", :value => "Twitter" }) %>
+            <%= f.check_box(:chkbx_Twitter, { :id => "cb_Twitter", :value => "Twitter" }) %>
             <%= label_tag "Twitter" %>
          </td>
          <td>
             <%= f.text_field :tf_Twitter %>
             <%= f.check_box(:chkbx_Twitter_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Punlic" %>
+            <%= label_tag "Public" %>
             <%= f.radio_button(:rb_Twitter_Preferred, "Preferred") %>
       		<%= label_tag "Preferred" %> 
          </td>
-	  </tr>
+	   </tr>
 </table>
 <table width="92%">
       <tr>
@@ -84,3 +112,26 @@
       </tr>
 </table>
 <% end %>
+
+
+<script type="text/javascript">
+   $("#communication_form").submit(function() {
+      var email = new RegExp(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i);
+      //alert(email);
+      var hasError1 = false;
+      var inp_email = $("#tb_email");
+      var email_value = $("#cb_Email").is(':checked') ? 1 : 0;
+      if(!inp_email.val().match(email))
+      {
+         var message1 =  $("#errormessage_email").html("Invalid Email");
+         message1.show();
+         hasError1 = true;
+      }
+      if(hasError1)
+      {
+        event.preventDefault();
+      }
+   });
+</script>
+
+
