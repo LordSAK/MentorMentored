@@ -290,11 +290,9 @@ class SettingsController < ApplicationController
     @students=Students.all
     @entrepreneurs=Entrepreneurs.all
     @veterans=Veterans.all
-    @user_profession=Profession.where(:UserID => current_user.id)
-  	@user_education=Education.where(:UserID => current_user.id)
+    @user_profession=Profession.where(:UserID => current_user.id.to_s)
+  	@user_education=Education.where(:UserID => current_user.id.to_s)
     @user_communication=Communication.where(:UserID => current_user.id)
-
-
   end
 
   def index
