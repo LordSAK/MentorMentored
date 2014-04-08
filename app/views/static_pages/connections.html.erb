@@ -2,7 +2,7 @@
     Connections 
 </h1>
 <%= form_for :connections, :url => { :method => :get, :action => :connections } do |f| %>
-<% if @user.nil? %>
+<% if !@user.nil? %>
 <% @user.each do |u| %>
 <table align="center" width="100%" style=" margin-top: 30px; margin-bottom:30px">
     <tr>
