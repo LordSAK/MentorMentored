@@ -88,7 +88,7 @@ class AvailabilitiesController < ApplicationController
   end
 
   def new
-  	@availibility=Availability.new
+  	#@availibility=Availability.new
   end
 
   def destroy
