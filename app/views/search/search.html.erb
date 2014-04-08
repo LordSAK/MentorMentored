@@ -25,7 +25,7 @@
          <table>
             <tr>
                <td align="center">
-                  <input type="text" name="tf_Zip" text="Zip" Style="text-align: left;" BackColor="#e5e5e5" Width="180px" ForeColor="Gray" Font-Size="Large" onblur="WaterMarkZip(this, event);" onfocus="WaterMarkZip(this, event);">
+                <%= text_field_tag "tf_Zip",nil,:placeholder =>'Zip' %>
                </td>
             </tr>
              <tr>
@@ -36,13 +36,14 @@
             </tr>
              <tr>
                <td align="center">
-                  <input type="text" name="tf_Designation" Style="text-align: left;" BackColor="#e5e5e5" Width="180px" ForeColor="Gray" Font-Size="Large">
+                <%= text_field_tag "tf_Designation",nil,:placeholder =>'Designation' %>
+
                </td>
             </tr>
              <tr>
-               <td align="center">
-                  <input type="text" name="tf_Company" Style="text-align: left;" BackColor="#e5e5e5" Width="180px" ForeColor="Gray" Font-Size="Large">
-               </td>
+                <td align="center">
+                  <%= text_field_tag "tf_Company",nil,:placeholder =>'Company' %>
+                </td>
             </tr>
          </table>
          <table>
