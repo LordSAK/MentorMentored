@@ -10,7 +10,7 @@ class SearchController < ApplicationController
   
   
   def search
-    @students=Students.all
+    @students=Students.order(:id).all
     
     #zip 
     if ( !params[:tf_Zip].blank? or params[:tf_Zip] != "" ) and ( params[:Interest] == "1" ) and (params[:tf_Designation] == "") and ( params[:tf_Company] == "")

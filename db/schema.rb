@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408101222) do
+ActiveRecord::Schema.define(version: 20140408103706) do
 
   create_table "availabilities", force: true do |t|
     t.integer  "UserID"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20140408101222) do
   end
 
   create_table "userrequests", force: true do |t|
-    t.string   "RequestFrom"
-    t.string   "RequestTo"
+    t.integer  "RequestFrom", limit: 255
+    t.integer  "RequestTo",   limit: 255
     t.string   "IsApproved"
     t.string   "SkillType"
     t.datetime "created_at"
