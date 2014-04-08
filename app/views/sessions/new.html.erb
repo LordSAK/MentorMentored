@@ -3,7 +3,6 @@ $("#signin").submit(function ( event ) {
     var hasError = false;
     if($('#rb_mentor').is(':checked') || $('#rb_mentee').is(':checked'))
     {
-      alert("it's checked"); 
       hasError = false;
     }
     else
@@ -22,7 +21,6 @@ $("#signin").submit(function ( event ) {
     var hasError = false;
     if($('#SkillType').is(':checked') || $('#SkillType1').is(':checked') || $('#SkillType2').is(':checked'))
     {
-      alert("network checked"); 
       hasError = false;
     }
     else
@@ -86,7 +84,7 @@ $("#signin").submit(function ( event ) {
 </tr>
 </table>
 <br/>
-<table style="margin-left:100px;" width="80%" id="network" border="1">
+<table style="margin-left:100px;" width="80%" id="network" >
   <tr>
     <td width="13%"></td>
     <td align="right">
