@@ -1,40 +1,3 @@
-    <script type="text/javascript">
-$("#signin").submit(function ( event ) {
-    var hasError = false;
-    if($('#rb_mentor').is(':checked') || $('#rb_mentee').is(':checked'))
-    {
-      hasError = false;
-    }
-    else
-    {
-         var message =  $("#errormessage1").html("Please Select");
-         message.show();
-         hasError = true;
-    } 
-    if(hasError){
-        event.preventDefault();
-    }
-});
-</script>
-    <script type="text/javascript">
-$("#signin").submit(function ( event ) {
-    var hasError = false;
-    if($('#SkillType').is(':checked') || $('#SkillType1').is(':checked') || $('#SkillType2').is(':checked'))
-    {
-      hasError = false;
-    }
-    else
-    {
-         var message1 =  $("#errormessage2").html("Please Select");
-         message1.show();
-         hasError = true;
-    } 
-    if(hasError){
-        event.preventDefault();
-    }
-});
-</script>
-
 <% provide(:title, "Sign in") %>
 <h2 class="subtitle">
   Welcome to Mentor Mentored
@@ -46,19 +9,24 @@ $("#signin").submit(function ( event ) {
 <%= form_for(:session, url: sessions_path,:html => {:id => "signin"}) do |f| %>
 <table width="100%">
   <tr>
-    <td align="center">
-      <%= f.label(:error, "", :id => "errormessage") %>
+    <td align="right" width="63%">
+      <label for="validation_all" id="errormessage" visible="false" style="color:red;"></label>
     </td>
+    <td width="37%"></td>
   </tr>
   <tr>
-    <td align="center" style="color: #212121;">
+    <td align="right" style="color: #212121;" width="63%">
       <%= f.text_field :email, :placeholder => "Email", :id => "tf_email" %>
       <br/>
     </td>
+    <td width="37%"></td>
   </tr>
   <tr>
-    <td align="center" style="color: #212121;">
+    <td align="right" style="color: #212121;" width="63%">
           <%= f.password_field :password, :placeholder => "Enter Password", :id => "tf_password" %>
+    </td>
+    <td width="37%">
+          <label for="validation_pw" id="errormessage3" visible="false" style="color:red; font-size:x-small;">
     </td>
   </tr>
 </table>
@@ -74,7 +42,7 @@ $("#signin").submit(function ( event ) {
       <%= f.label(:user_Type, "Mentee") %>
     </td>
     <td align="center" width="38%">
-      <label for="validation" id="errormessage1" visible="false"></label> 
+      <label for="validation" id="errormessage1" visible="false" style="color:red;"></label> 
     </td>
   </tr>
 </table>
@@ -84,23 +52,23 @@ $("#signin").submit(function ( event ) {
 </tr>
 </table>
 <br/>
-<table style="margin-left:100px;" width="80%" id="network" >
+<table style="margin-left:100px;" width="80%" id="network">
   <tr>
     <td width="13%"></td>
     <td align="right">
-      <%= f.radio_button(:SkillType,:id => "SkillType") %>
+      <%= f.radio_button(:SkillType, "Students",:id => "rb_SkillType") %>
       <%= f.label(:SkillType, " Students") %>
     </td>
     <td align="center">
-      <%= f.radio_button(:SkillType1,:id => "SkillType1") %>
+      <%= f.radio_button(:SkillType1, "Entrepreneurs",:id => "rb_SkillType1") %>
       <%= f.label(:SkillType1, " Entrepreneurs") %>
     </td>
     <td align="left">
-      <%= f.radio_button(:SkillType2,:id => "SkillType2") %>
+      <%= f.radio_button(:SkillType2, "Veterans",:id => "rb_SkillType2") %>
       <%= f.label(:SkillType2, " Veterans") %>
     </td>
     <td align="center" width="28%">
-      <label for="validation" id="errormessage2" visible="false"></label> 
+      <label for="validation" id="errormessage2" visible="false" style="color:red;"></label> 
     </td>
   </tr>
 </table>
@@ -124,3 +92,113 @@ $("#signin").submit(function ( event ) {
     </td>
   </tr>
 </table>
+
+<script type="text/javascript">
+   $("#signin").submit(function ( event ) {
+      //alert("Hassan");
+      //var email = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i;
+      var email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //alert(email);
+      var hasError1 = false;
+      var inp_email = $("#tf_email").val();
+      var inp_pw = $("#tf_password").val();
+      //alert(inp_pw.length);
+      //var inp_email = $("#tb_email").val();
+      if(!email.test(inp_email))
+      //if (!inp_email.val().match(email)) 
+      {
+        if (inp_pw == 0)
+        {
+          var message = $("#errormessage").html("Invalid Email/Password");//alert("Hassan");
+          message.show();
+          hasError = true; 
+        }
+        else
+        {
+          var message = $("#errormessage").html("Invalid Email/Password");//alert("Hassan");
+          message.show();
+          hasError = true; 
+        }
+      }
+      else
+      {
+        if (inp_pw == 0)
+        {
+          var message = $("#errormessage").html("Invalid Email/Password");//alert("Hassan");
+          message.show();
+          hasError = true; 
+        }
+        else
+        {
+        //alert("Hassan");
+        hasError = false;
+        $("#errormessage").empty().hide();
+        }
+      }
+
+      if(inp_pw.length < 6)
+      { 
+        var message = $("#errormessage3").html("Password must be greater then 5 characters");//alert(
+        message.show();
+        hasError = true; 
+      }
+      else
+      {
+        //alert("Hassan");
+        hasError = false;
+        $("#errormessage3").empty().hide();
+      }
+});
+</script>
+<script type="text/javascript">
+   $("#signin").submit(function ( event ) {
+      //alert("Hassan");
+      var mentor_value = $("#rb_mentor").is(':checked') ? 1 : 0;
+      var mentee_value = $("#rb_mentee").is(':checked') ? 1 : 0;
+      //alert(mentee_value);
+      var hasError = false;
+      if(mentor_value == 0 && mentee_value == 0)
+      {
+         var message1 = $("#errormessage1").html("Please Select");//alert("Hassan");
+         message1.show();
+         hasError = true;
+      }
+      else
+      {
+        hasError = false;
+        $("#errormessage1").empty().hide();
+      } 
+      if(hasError)
+      {
+        event.preventDefault();
+      }
+   });
+</script>
+<script type="text/javascript">
+   $("#signin").submit(function ( event ) {
+      //alert("Hassan");
+      var network_value1 = $("#rb_SkillType").is(':checked') ? 1 : 0;
+      var network_value2 = $("#rb_SkillType1").is(':checked') ? 1 : 0;
+      var network_value3 = $("#rb_SkillType2").is(':checked') ? 1 : 0;
+      //alert(network_value1);
+      var hasError2 = false;
+      //alert(network_value1);
+      if(network_value1 == 0 && network_value2 == 0 && network_value3 == 0)
+      {
+        //alert("Ali");
+         var message2 = $("#errormessage2").html("Please Select");//alert("Hassan");
+         message2.show();
+         hasError2 = true;
+      }
+      else
+      {
+        //alert("Hassan");
+        hasError2 = false;
+        $("#errormessage2").empty().hide();
+      } 
+      if(hasError2)
+      {
+        event.preventDefault();
+      }
+   });
+</script>
