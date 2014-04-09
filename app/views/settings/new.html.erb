@@ -247,123 +247,170 @@
 </h2>
 <div align="center" width="100%">
 
+    <% ph=0 %>
+    <% em=0 %>
+    <% wbs=0 %>
+    <% twtr=0 %>
+    <% skyp=0 %>
+
        <table>
         <% if @user_communication.blank? %>
-
             <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-
-                Phone:
-             </td>
-             <td style="font-size: large; color: #212121;">
-
-                <%= text_field_tag :tf_phone %>
-                
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Email:
-             </td>
-             <td style="font-size: large; color: #212121;">
-                
-                <%= text_field_tag :tf_email %>
-
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Skype:
-             </td>
-             <td style="font-size: large; color: #212121;">
-
-                <%= text_field_tag :tf_skype %>
-                
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Website:
-             </td>
-             <td style="font-size: large; color: #212121;">
-                
-                <%= text_field_tag :tf_website %>
-                
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Twitter:
-             </td>
-             <td style="font-size: large; color: #212121;">
-
-                <%= text_field_tag :tf_twitter %>
-             </td>
-          </tr>
+                <td style="font-size: large; color: #212121;">
+                    Phone:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_phone %>
+                </td>
+            </tr>
+            <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Email:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_email %>
+                </td>
+            </tr>
+            <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Skype:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_skype %>
+                </td>
+            </tr>
+            <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Website:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_website %>
+                </td>
+            </tr>
+            <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Twitter:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_twitter %>
+                </td>
+            </tr>
         <%else %>
-        <% @user_communication.each do |user_com| %>
-        <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Phone:
-             </td>
-             <td style="font-size: large; color: #212121;">
+            <% @user_communication.each do |user_com| %>
                 <% if user_com.CommunicationMode.to_s == "Phone" %>
-                <%= text_field_tag :tf_phone, user_com.CommunicationDetail %>
-                <% else %>
-                <%= text_field_tag :tf_phone %>
+                <tr style="text-align: left; vertical-align: middle;">
+                    <% ph=1 %>
+                    <td style="font-size: large; color: #212121;">
+                        Phone:
+                    </td>
+                    <td style="font-size: large; color: #212121;">
+                        <%= text_field_tag :tf_phone, user_com.CommunicationDetail %>
+                    </td>
+                </tr>
                 <% end %>
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Email:
-             </td>
-             <td style="font-size: large; color: #212121;">
                 <% if user_com.CommunicationMode.to_s == "Email" %>
-                <%= text_field_tag :tf_email, user_com.CommunicationDetail %>
-                <% else %>
-                <%= text_field_tag :tf_email %>
+                <tr style="text-align: left; vertical-align: middle;">
+                    <% em=1 %>
+                    <td style="font-size: large; color: #212121;">
+                        Email:
+                    </td>
+                    <td style="font-size: large; color: #212121;">
+                        <%= text_field_tag :tf_email, user_com.CommunicationDetail %>
+                    </td>
+                </tr>
                 <% end %>
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Skype:
-             </td>
-             <td style="font-size: large; color: #212121;">
+                
+                
                 <% if user_com.CommunicationMode.to_s == "Skype" %>
-                <%= text_field_tag :tf_skype, user_com.CommunicationDetail %>
-                <% else %>
-                <%= text_field_tag :tf_skype %>
+                <tr style="text-align: left; vertical-align: middle;">
+                    <% skyp =1 %>
+                    <td style="font-size: large; color: #212121;">
+                        Skype:
+                    </td>
+                    <td style="font-size: large; color: #212121;">
+                        <%= text_field_tag :tf_skype, user_com.CommunicationDetail %>
+                    </td>
+                </tr>
                 <% end %>
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Website:
-             </td>
-             <td style="font-size: large; color: #212121;">
+                
+                
                 <% if user_com.CommunicationMode.to_s == "Website" %>
-                <%= text_field_tag :tf_website, user_com.CommunicationDetail %>
-                <% else %>
-                <%= text_field_tag :tf_website %>
+                <tr style="text-align: left; vertical-align: middle;">
+                <% wbs=1 %>
+                    <td style="font-size: large; color: #212121;">
+                        Website:
+                    </td>
+                    <td style="font-size: large; color: #212121;">
+                        <%= text_field_tag :tf_website, user_com.CommunicationDetail %>
+                    </td>
+                
+                </tr>
                 <% end %>
-             </td>
-          </tr>
-          <tr style="text-align: left; vertical-align: middle;">
-             <td style="font-size: large; color: #212121;">
-                Twitter:
-             </td>
-             <td style="font-size: large; color: #212121;">
+                
                 <% if user_com.CommunicationMode.to_s == "Twitter" %>
-                <%= text_field_tag :tf_twitter, user_com.CommunicationDetail%>
-                <% else %>
-                <%= text_field_tag :tf_twitter %>
+                <tr style="text-align: left; vertical-align: middle;">
+                    <% twtr =1 %>
+                    <td style="font-size: large; color: #212121;">
+                        Twitter:
+                    </td>
+                    <td style="font-size: large; color: #212121;">
+                        <%= text_field_tag :tf_twitter, user_com.CommunicationDetail%>
+                    </td>
+                
+                </tr>
                 <% end %>
-             </td>
-          </tr>
+            <% end %>
+            <% if ph==0 %>
+            <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Phone:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_phone %>
+                </td>
+            </tr>
+            <% end %>
+            <% if em ==0 %>
+                <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Email:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_email %>
+                </td>
+            </tr>
+            <% end %>
+            <% if skyp ==0 %>
+                <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Skype:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_skype %>
+                </td>
+                </tr>
+            <% end %>
+            <% if wbs ==0 %>
+                <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Website:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_website %>
+                </td>
+                </tr>
+            <% end %>
+            <%if twtr==0 %>
+                <tr style="text-align: left; vertical-align: middle;">
+                <td style="font-size: large; color: #212121;">
+                    Twitter:
+                </td>
+                <td style="font-size: large; color: #212121;">
+                    <%= text_field_tag :tf_twitter %>
+                </td>
+                </tr>
+            <% end %>
         <% end %>
-        <%end %>
     </table>
 </div>
 <h2 class="subtitle">

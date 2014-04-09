@@ -205,7 +205,7 @@ class SettingsController < ApplicationController
     end
   else 
       Communication.delete_all(:UserID => current_user.id)     
-    if !params[:tf_Phone].blank?
+    if !params[:tf_phone].blank?
         @Phone = "Phone"
         @Phone_detail = params[:tf_phone]
         @Phone_Preferred = "Preferred"
