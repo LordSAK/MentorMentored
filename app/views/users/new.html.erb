@@ -1,21 +1,4 @@
 <% provide(:title, 'Sign up') %>
-    <script type="text/javascript">
-$("#signup").submit(function ( event ) {
-
-    var mentor = $('#rb_mentor').val();
-    var mentee = $('#rb_mentee').val();
-    var hasError = false;
-
-    if((mentor == 0) || (mentee == 0)){
-        alert("Please select atleast one box")
-        hasError = true;
-    }
-
-    if(hasError){
-        event.preventDefault();
-    }
-});
-</script>
 <script type="text/javascript">
   $(document).ready(function () {
     $("#SkillType").change(function (){
@@ -78,7 +61,7 @@ $("#signup").submit(function ( event ) {
   </tr>
 </table>
 <br/>
-<table align="center" width="70%">
+<table align="center" width="100%">
   <tr>
     <td align="right" height="35px" style="font-size: large; color: #212121;">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -91,14 +74,26 @@ $("#signup").submit(function ( event ) {
       <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
       <%= f.label(:user_Type, "Mentee") %>
     </td>
+    <td width="40%" style="text-align:right;">
+        <label for="validation_all" id="errormessage1" visible="false" style="color:red;"></label>
+    </td>
   </tr>
 </table>
-<table align="center" width="80%" >
+<table align="center" width="100%">
     <tr>
-      <td width="20%">
+      <td>
+      </td>
+      <td>
+      </td>
+      <td width="40%" style="text-align:right;">
+        <label for="validation_all" id="errormessage2" visible="false" style="color:red;" ></label>
+      </td>
+    </tr>
+    <tr>
+      <td width="10%">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </td>
-      <td width="25%" align="left" style="vertical-align: bottom; color: #212121;" class="style6">
+      <td width="20%" align="left" style="vertical-align: bottom; color: #212121;" class="style6">
           <%= f.check_box(:SkillType,{:id => "SkillType",:value => "Students"}) %>
           <%= f.label(:SkillType, " Students") %>
       </td>
@@ -141,3 +136,52 @@ $("#signup").submit(function ( event ) {
 </tr>
 </table>
 <% end %>
+<script type="text/javascript">
+   $("#signup").submit(function ( event ) {
+      //alert("Hassan");
+      var mentor_value = $("#rb_mentor").is(':checked') ? 1 : 0;
+      var mentee_value = $("#rb_mentee").is(':checked') ? 1 : 0;
+      //alert(mentor_value);
+      var hasError = false;
+      if(mentor_value == 0 && mentee_value == 0)
+      {
+        var message = $("#errormessage1").html("Please Select");//alert("Hassan");
+        message.show();
+        hasError = true;
+      }
+      else
+      {
+        hasError = false;
+        $("#errormessage1").empty().hide();
+      } 
+      if(hasError)
+      {
+        event.preventDefault();
+      }
+   });
+</script>
+<script type="text/javascript">
+   $("#signup").submit(function ( event ) {
+      //alert("Hassan");
+      var network_value1 = $("#SkillType").is(':checked') ? 1 : 0;
+      var network_value2 = $("#SkillType1").is(':checked') ? 1 : 0;
+      var network_value3 = $("#SkillType2").is(':checked') ? 1 : 0;
+      //alert(mentor_value);
+      var hasError1 = false;
+      if(network_value1 == 0 && network_value2 == 0 && network_value3 == 0)
+      {
+        var message = $("#errormessage2").html("Please Select");//alert("Hassan");
+        message.show();
+        hasError1 = true;
+      } 
+      else
+      {
+        hasError1 = false;
+        $("#errormessage2").empty().hide();
+      }
+      if(hasError1)
+      {
+        event.preventDefault();
+      }
+   });
+</script>
