@@ -77,7 +77,7 @@
                 <tr>
                     <td>
                         <div class="button">
-                            <%= button_to "Cancel", '/default', { method: :get, :class => "buttonblck" } %>
+                            <%= link_to "Cancel", reject_path(:id =>u.RequestTo), { method: :post, :class => "buttonblck" } %>
                         </div> 
                     </td>
                 </tr>
@@ -91,7 +91,7 @@
 <tr>
         <td>
             <div class="button">
-                    <%= link_to "Back", :back, { :class => "buttonBack"} %>
+                    <%= link_to "Back", "/default", { :class => "buttonBack"} %>
             </div>
         </td>
     </tr>

@@ -45,6 +45,7 @@ MentorMentored::Application.routes.draw do
   #match '/pendingrequest', to: 'static_pages#pending_request', via: 'post'
   match '/accepts', to: 'static_pages#creates', via: 'post'
   match '/ignore', to: 'static_pages#update', via: 'post'
+  match '/reject', to: 'static_pages#reject',via: 'post'
   #match '/static_pages', to: 'static_pages#create', via: :post, as: '/accept'
   match '/sentrequest', to: 'static_pages#request_I_have_sent', via: 'get'
   match '/connection', to: 'static_pages#connections', via: 'get'

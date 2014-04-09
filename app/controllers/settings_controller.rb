@@ -246,7 +246,7 @@ class SettingsController < ApplicationController
     end
   end
     
-    render 'new'
+    redirect_to "/default"
     #@user = User.new(user_params)
   end
 

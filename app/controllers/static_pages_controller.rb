@@ -5,16 +5,17 @@ class StaticPagesController < ApplicationController
   def default
   end
 
+  def reject
+    requestfrom = Userrequest.where('"RequestFrom" = ? AND "RequestTo" = ? AND "IsApproved" = ?',current_user.id,params[:id], "0")
+    requestfrom.first.update_attribute(:IsApproved, "2")
+    redirect_to '/default'
+  end
+
+
   def update
     requestfrom = Userrequest.where('"RequestFrom" = ? AND "RequestTo" = ? AND "IsApproved" = ?',params[:id], current_user.id, "0")
-    #requestfrom = User.where(@user.RequestFrom)
-    #requestfrom.first.update_attribute( :RequestFrom, requestfrom)
-     # requestfrom.first.update_attribute(:RequestTo => current_user.id)
     requestfrom.first.update_attribute(:IsApproved, "2")
-    #Userrequest.requestfrom.save
-    
     redirect_to '/default'
-    #input_message.update_attributes(:status => params[:status]) 
   end
 
   def creates
