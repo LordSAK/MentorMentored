@@ -1,9 +1,17 @@
 <%= form_for :profile, :url => { :method => :get, :action => :profile } do |f| %>
 
 <table align="center" width="85%" style=" margin-top: 30px; margin-left:55px; margin-bottom:30px">
+    <% if !@user.photo.url.blank? %>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <% end %>
+
     <tr>
         <td width="40%" style="background-color: #FFFFFF;font-size: large" class="style1" ForeColor="Gray">
-        
+        <%= image_tag @user.photo.url(:small),:alt => " " %><br/>
         <%= f.label(:name, @user.First_Name + " " + @user.Last_Name, :style => "color:Gray;")  %>
         
         </td>

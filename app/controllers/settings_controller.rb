@@ -14,8 +14,10 @@ class SettingsController < ApplicationController
     #requestfrom.first.update_attribute(:IsApproved, "2")
     @user_basic.update_attribute( :user_Need, params[:user_Need])
     @user_basic.update_attribute( :SkillNeed1, params[:SkillNeed1])
-    @user_basic.update_attribute( :skillNeed2, params[:SkillNeed2])    
-    
+    @user_basic.update_attribute( :skillNeed2, params[:SkillNeed2])   
+    if !params[:settings][:photo].blank?
+      @user_basic.update_attribute(:photo, params[:settings][:photo]) 
+    end
         @blah = params[:ChkBx_Profession]
   if params[:ChkBx_Profession] == "1"
     Profession.delete_all(:UserID => current_user.id)

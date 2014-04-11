@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408103706) do
+ActiveRecord::Schema.define(version: 20140411090426) do
 
   create_table "availabilities", force: true do |t|
     t.integer  "UserID"
@@ -100,7 +100,11 @@ ActiveRecord::Schema.define(version: 20140408103706) do
     t.string   "SkillType2"
     t.string   "skillNeed2"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",              default: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

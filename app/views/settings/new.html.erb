@@ -88,7 +88,7 @@
     Basic Information
 </h2>
 
-<%= form_for :settings, :url => {:action => :create} do |f| %>
+<%= form_for :settings, :url => {:action => :create}, :html=> {:multipart => true} do |f| %>
 
 <table>
       <tr>
@@ -414,10 +414,13 @@
     </table>
 </div>
 <h2 class="subtitle">
-   <!-- Profile Images -->
+    Profile Images 
 </h2>
-<table align="center" width="100%">
+<table align="center" width="110%">
         <tr>
+            <td align="center">
+            <%= f.file_field :photo %>
+        </td>
         </tr>
 </table>
 <h2 class="subtitle">
