@@ -6,12 +6,32 @@ before_action :signed_in_user, only: [:create, :destroy]
 
   def create
   	if !params[:Educations][:tf_Degree].blank? && params[:Educations][:tf_Degree] != "Degree"
-  	@Degree = params[:Educations][:tf_Degree]
-  	@From = params[:Educations][:fromyear]
-  	@To = params[:Educations][:toyear]
-  	@Education = Education.new( :UserID => current_user.id, :SchoolName => @Degree, :SchoolFrom => @From, :SchoolTo => @To )
-  	@Education = @Education.save
+  	 @Degree = params[:Educations][:tf_Degree]
+  	 @From = params[:Educations][:fromyear]
+  	 @To = params[:Educations][:toyear]
+  	 @Education = Education.new( :UserID => current_user.id, :SchoolName => @Degree, :SchoolFrom => @From, :SchoolTo => @To )
+  	 @Education = @Education.save
   	end
+    if !params[:parametersSch].blank?
+      params[:parametersSch].each do |keydeg, degree|
+        if !degree.nil?
+          @degree=degree
+          params[:ParametersFromSch].each do |keyfrom, from|
+            if keydeg== keyfrom
+              @from=from
+            end
+          end
+
+          params[:ParametersToSch].each do |keyto, to|
+            if keydeg==keyto
+              @to=to          
+            end
+          end
+          @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to)
+          @Education.save
+        end
+      end
+    end
   	redirect_to '/default'
   end
 

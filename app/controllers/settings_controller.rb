@@ -15,19 +15,35 @@ class SettingsController < ApplicationController
     @user_basic.update_attribute( :user_Need, params[:user_Need])
     @user_basic.update_attribute( :SkillNeed1, params[:SkillNeed1])
     @user_basic.update_attribute( :skillNeed2, params[:SkillNeed2])   
-    if !params[:settings][:photo].blank?
+    if !params[:settings].nil?
       @user_basic.update_attribute(:photo, params[:settings][:photo]) 
     end
         @blah = params[:ChkBx_Profession]
   if params[:ChkBx_Profession] == "1"
     Profession.delete_all(:UserID => current_user.id)
     if !params[:tf_designation].blank?
-        @desig = params[:tf_designation]
-        @comp = params[:tf_company]
-        @fromdesigcom = params[:tf_fromdesignation]
-        @todesigcom = params[:tf_todesignation]
-        @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom, :Private? => "1" )
-        @Profession.save
+      params[:tf_designation].each do |keydesignation,designation|
+        if !designation.nil?
+          @desig = designation
+          params[:tf_company].each do |keycompany,company|
+            if keydesignation == keycompany
+              @comp = company
+            end
+          end
+          params[:tf_fromdesignation].each do |keyfromprof,fromprof|
+            if keydesignation ==  keyfromprof
+              @fromdesigcom = fromprof
+            end
+          end
+          params[:tf_todesignation].each do |keytoprof,toprof|
+            if keydesignation==keytoprof
+              @todesigcom = toprof
+            end
+          end
+          @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom, :Private? => "1" )
+          @Profession.save
+        end
+      end
     end
 
     if !params[:parameters].blank?
@@ -50,20 +66,36 @@ class SettingsController < ApplicationController
             @to=toprof          
           end
         end
-        @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to, :private? => "1")
+        @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to, :Private? => "1")
         @Profession.save
       end
     end  
     end
   else
-        Profession.delete_all(:UserID => current_user.id)
+    Profession.delete_all(:UserID => current_user.id)
     if !params[:tf_designation].blank?
-        @desig = params[:tf_designation]
-        @comp = params[:tf_company]
-        @fromdesigcom = params[:tf_fromdesignation]
-        @todesigcom = params[:tf_todesignation]
-        @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom, :Private? => "0" )
-        @Profession.save
+      params[:tf_designation].each do |keydesignation,designation|
+        if !designation.nil?
+          @desig = designation
+          params[:tf_company].each do |keycompany,company|
+            if keydesignation == keycompany
+              @comp = company
+            end
+          end
+          params[:tf_fromdesignation].each do |keyfromprof,fromprof|
+            if keydesignation ==  keyfromprof
+              @fromdesigcom = fromprof
+            end
+          end
+          params[:tf_todesignation].each do |keytoprof,toprof|
+            if keydesignation==keytoprof
+              @todesigcom = toprof
+            end
+          end
+          @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom, :Private? => "1" )
+          @Profession.save
+        end
+      end
     end
 
     if !params[:parameters].blank?
@@ -96,11 +128,24 @@ class SettingsController < ApplicationController
   if params[:ChkBx_Education].to_s == "1"
     Education.delete_all(:UserID => current_user.id)
     if !params[:tf_education].blank?
-        @education = params[:tf_education]
-        @fromeducation = params[:tf_fromeducation]
-        @toeducation = params[:tf_toeducation]
-        @Education = Education.new( :UserID => current_user.id, :SchoolName => @education, :SchoolFrom => @fromeducation, :SchoolTo => @toeducation, :Private? => "1" )
+        params[:tf_education].each do |keydeg, degree|
+        if !degree.nil?
+          @degree=degree
+          params[:tf_fromeducation].each do |keyfrom, from|
+          if keydeg== keyfrom
+            @from=from
+          end
+        end
+
+        params[:tf_toeducation].each do |keyto, to|
+          if keydeg==keyto
+            @to=to          
+          end
+        end
+        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private? => "1" )
         @Education.save
+      end
+    end
     end
     
     if !params[:parametersSch].blank?
@@ -126,11 +171,24 @@ class SettingsController < ApplicationController
   else
     Education.delete_all(:UserID => current_user.id)
     if !params[:tf_education].blank?
-        @education = params[:tf_education]
-        @fromeducation = params[:tf_fromeducation]
-        @toeducation = params[:tf_toeducation]
-        @Education = Education.new( :UserID => current_user.id, :SchoolName => @education, :SchoolFrom => @fromeducation, :SchoolTo => @toeducation, :Private? => "0" )
+       params[:tf_education].each do |keydeg, degree|
+      if !degree.nil?
+        @degree=degree
+        params[:tf_fromeducation].each do |keyfrom, from|
+          if keydeg== keyfrom
+            @from=from
+          end
+        end
+
+        params[:tf_toeducation].each do |keyto, to|
+          if keydeg==keyto
+            @to=to          
+          end
+        end
+        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private? => "1" )
         @Education.save
+      end
+    end
     end
     
     if !params[:parametersSch].blank?

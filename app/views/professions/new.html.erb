@@ -66,6 +66,7 @@ var controls = "<tr><td align='center'>From "+ DDL_fromProfession + " To "+DDL_T
 controls += "<br/><button type='button' class='btn_rmv'>Remove</button></td></tr>";
      $('#Controls').append(newRow);
      $('#Controls').append(controls);
+     $('#valPro').val(hidval);
      return false;
   });
 
@@ -146,7 +147,7 @@ controls += "<br/><button type='button' class='btn_rmv'>Remove</button></td></tr
             <table id="Controlsbtn_remove">
             </table>
             <div><input id="btnAdd" value="Add" type="submit" /></div>
-            <input id="valPro" type="hidden" value="0" />
+            <input id="valPro" name="valPro" type="hidden" value="0" />
             
          </td>
       </tr>
