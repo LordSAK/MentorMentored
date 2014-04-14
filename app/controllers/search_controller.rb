@@ -10,7 +10,15 @@ class SearchController < ApplicationController
   
   
   def search
-    @students=Students.order(:id).all
+    if current_user.SkillType== "1"
+      @students=Students.order(:id).all
+    elsif current_user.SkillType1=="1"
+      puts "in ente"
+      @students=Entrepreneurs.order(:id).all
+    elsif current_user.SkillType2=="1"
+      @students=Veterans.order(:id).all
+    end
+      
     
     #zip 
     if ( !params[:tf_Zip].blank? or params[:tf_Zip] != "" ) and ( params[:Interest] == "1" ) and (params[:tf_Designation] == "") and ( params[:tf_Company] == "")
