@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
   def reject1
     requestfrom = Userrequest.where('"RequestFrom" = ? AND "RequestTo" = ? AND "IsApproved" = ?',params[:id], current_user.id, "1")
     requestfrom.first.update_attribute(:IsApproved, "2")
-    requestto= Userrequest.where('"RequestFrom" ? AND "RequestTo" = ? AND "IsApproved" = ?',current_user.id,params[:id],"1")
+    requestto= Userrequest.where('"RequestFrom" = ? AND "RequestTo" = ? AND "IsApproved" = ?',current_user.id,params[:id],"1")
     requestto.first.update_attribute(:IsApproved, "2")
     redirect_to '/default'
   end
