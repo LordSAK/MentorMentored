@@ -16,9 +16,9 @@ validates :email, :presence => {:message => "Enter your email address!" }, :form
   #validates :email, presence: true, :format=> { :with=> VALID_EMAIL_REGEX , :message=> 'Enter your Email Address' }
   #validates :email, uniqueness:  { case_sensitive: false }, message: 'Please provide a valid Email'
   
-    validates :password, length: { minimum: 6 }
-    #validates :password, :presence => true, :confirmation => true,
-    #:length => { minimum: 6 }, :on => :create
+    #validates :password, length: { minimum: 6 }
+    validates :password, :presence => true, :confirmation => true,
+    :length => { minimum: 6 }, :if => lambda{ new_record? || !password.nil? }
   	has_secure_password
 
 
