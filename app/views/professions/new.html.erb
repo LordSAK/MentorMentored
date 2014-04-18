@@ -63,9 +63,10 @@
 
      
 var controls = "<tr><td align='center'>From "+ DDL_fromProfession + " To "+DDL_ToProfession+ "</td></tr>";
-controls += "<br/><button type='button' class='btn_rmv'>Remove</button></td></tr>";
+var control = "<tr><td align='center'><button type='button' class='btn_rmv'>Remove</button></td></tr>";
      $('#Controls').append(newRow);
      $('#Controls').append(controls);
+     $('#Controls').append(control);
      $('#valPro').val(hidval);
      return false;
   });
@@ -73,7 +74,7 @@ controls += "<br/><button type='button' class='btn_rmv'>Remove</button></td></tr
             $('#Controls').on('click', '.btn_rmv', function() {
               //alert("ali");
                 var index = $(this).closest('tr').index() + 2
-                $('#Controls tr:nth-child(n+' + (index - 2) + ')').remove();
+                $('#Controls tr:nth-child(n+' + (index - 3) + ')').remove();
                 return false;
             });
 

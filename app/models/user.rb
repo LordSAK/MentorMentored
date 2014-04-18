@@ -30,6 +30,21 @@ validates :email, :presence => {:message => "Enter your email address!" }, :form
 validates_attachment_size :photo, :less_than => 5.megabytes
 validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
+before_create { generate_token(:auth_token) }
+
+def send_password_reset
+  generate_token(:password_reset_token)
+  self.password_reset_sent_at = Time.zone.now
+  save!
+  UserMailer.password_reset(self).deliver
+end
+
+def generate_token(column)
+  begin
+    self[column] = SecureRandom.urlsafe_base64
+  end while User.exists?(column => self[column])
+end
+
   	def User.new_remember_token
   		SecureRandom.urlsafe_base64
   	end

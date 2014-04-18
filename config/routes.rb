@@ -1,4 +1,5 @@
 MentorMentored::Application.routes.draw do
+  get "password_resets/new"
   get "profile/create"
   get "profile/profile"
   get "search/new"
@@ -24,6 +25,7 @@ MentorMentored::Application.routes.draw do
   resources :professions, only: [:create, :destroy]
   resources :educations, only: [:create, :destroy]
   resources :settings, only: [:new, :create]
+  resources :password_resets
   #resources :search, only: [:search, :create]
 
   root "static_pages#home"
@@ -46,11 +48,14 @@ MentorMentored::Application.routes.draw do
   match '/accepts', to: 'static_pages#creates', via: 'post'
   match '/ignore', to: 'static_pages#update', via: 'post'
   match '/reject', to: 'static_pages#reject',via: 'post'
+  match '/rejectconnection', to: 'static_pages#reject1',via: 'post'
   #match '/static_pages', to: 'static_pages#create', via: :post, as: '/accept'
   match '/sentrequest', to: 'static_pages#request_I_have_sent', via: 'get'
   match '/connection', to: 'static_pages#connections', via: 'get'
   match '/setting', to: 'settings#reset_password', :via => :post
   match '/deleteaccount', to: 'settings#delete_my_account', :via => :post
+  
+  #match '/reset_password', to: 'password_resets#create', via: 'get'
   #match 'profile/:id',to: 'profile#profile',via: 'get'
   #match '/setting', to: 'setting#create', via: "get"
   #get 'settings', :to => redirect('/settings#new')

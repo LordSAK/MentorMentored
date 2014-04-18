@@ -17,6 +17,7 @@
         </td>
         <td width="60%" style="background-color:#00BFFF;font-size: large">
             <% @user_education.each do |user_edu| %>
+            <% if user_edu.Private? == "1" %>
             <table style="color:white;">
                 <tr>
                     <td>
@@ -26,7 +27,17 @@
                         <%= f.label(:schoolfrom, user_edu.SchoolFrom) %>
                     </td>
                 </tr>
+            </table>
+            <% else %>
+            <table style="color:white;">
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
             </table>	
+            <% end %>
             <% end %>
         </td>
     </tr>
@@ -60,6 +71,7 @@
         </td>
         <td width="60%" style="background-color:#00BFFF;font-size: large">
             <% @user_profession.each do |user_pro| %>
+            <% if user_pro.Private? == "1" %>
             <table style="color:white;">
                 <tr>
                     <td>
@@ -71,6 +83,16 @@
                     </td>
                 </tr> 
             </table>
+            <% else %>
+            <table style="color:white;">
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr> 
+            </table>
+            <% end %> 
             <% end %> 
         </td>
     </tr>

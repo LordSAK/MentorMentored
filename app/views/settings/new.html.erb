@@ -449,88 +449,182 @@
                 </tr>
             </table>
          </td>
-         
          <td>
             <%= label(:label2, "Show these details in search result", {}, { :class => "labelTo" }) %>
             <br />
-            <%= check_box(:ChkBx_Location,{:id => "ChkBx_Location",:value => "Location"}) %>
-            <%= label(:lb_Location, "Location") %>
-            <br />
-            <% @user_profession.each do |p| %>
-            <% if !p.Designation.blank? and p.Private?.to_s == "1" %>
-                    <input type="checkbox" name="ChkBx_Profession"
-                    id="ChkBx_Profession" value="1" checked = "checked">
-                    <%= label(:lb_Profession, "Profession") %>
-             <% else %>
-                    <input type="checkbox" name="ChkBx_Profession"
-                    id="ChkBx_Profession" value="0">
-                    <%= label(:lb_Profession, "Profession") %>
-             <% end %>
-             <% end %>
-            <br />
-            <% @user_education.each do |e| %>
-            <% if e.Private? == "1" %>
-                    <input type="checkbox" name="ChkBx_Education"
-                    id="ChkBx_Education" value="1" checked = "checked">
-                    <%= label(:lb_Profession, "Education") %>
-            <% else %>
-                    <input type="checkbox" name="ChkBx_Education"
-                    id="ChkBx_Education" value="0">
-                    <%= label(:lb_Profession, "Education") %>
-            <% end %>
-            <% end %>
-            <br />
-            <% @user_communication.each do |c| %>
-            <% if c.CommunicationMode == "Phone" and c.Private?.to_s == "1" %>
-                    <input type="checkbox" name="ChkBx_Phone"
+            <table>
+                <tr>
+                    <td>
+                        <%= check_box(:ChkBx_Location,{:id => "ChkBx_Location",:value => "Location"}) %>
+                        <%= label(:lb_Location, "Location") %>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <% pro = 0 %>
+                <% if @user_profession.blank? %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Profession' %>
+                            <%= label(:lb_Profession, "Profession") %>
+                        </td>
+                    </tr>
+                <% else %>
+                    <% @user_profession.each do |p| %>
+                        <tr> 
+                            <td>
+                            <% pro = 1 %>
+                            <% if pro == 1 %>
+                            <% if !p.Designation.blank? and p.Private?.to_s == "1" %>
+                                <input type="checkbox" name="ChkBx_Profession"
+                                id="ChkBx_Profession" value="1" checked = "checked">
+                                <%= label(:lb_Profession, "Profession") %>
+                            <% elsif !p.Designation.blank? and p.Private?.to_s == "0" %>
+                                <%= check_box_tag 'ChkBx_Profession' %>
+                                <%= label(:lb_Profession, "Profession") %>
+                             <% end %>
+                             <% end %>
+                            <% if pro == 0 %>    
+                                <%= check_box_tag 'ChkBx_Profession' %>
+                                <%= label(:lb_Profession, "Profession") %>
+                            <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </table>
+            <table>
+                <% edu = 0 %>
+                <% if @user_education.blank? %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Education' %>
+                            <%= label(:lb_Educarion, "Education") %>
+                        </td>
+                    </tr>
+                <% else %>
+                    <% @user_education.each do |e| %>
+                        <tr>
+                            <td>
+                            <% edu = 1 %>
+                            <% if edu == 1 %>
+                            <% if !e.SchoolName.blank? and e.Private?.to_s == "1" %>
+                                    <input type="checkbox" name="ChkBx_Education"
+                                    id="ChkBx_Education" value="1" checked = "checked">
+                                    <%= label(:lb_Education, "Education") %>
+                            <% elsif !e.SchoolName.blank? and e.Private?.to_s == "0" %>
+                                    <%= check_box_tag 'ChkBx_Education' %>
+                                    <%= label(:lb_Educarion, "Education") %>
+                            <% end %>
+                            <% end %>
+                            <% if edu == 0 %>
+                            <%= check_box_tag 'ChkBx_Education' %>
+                            <%= label(:lb_Educarion, "Education") %>
+                            <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </table>
+            <table>
+                <% phone = 0 %>
+                <% email = 0 %>
+                <% skype = 0 %>
+                <% website = 0 %>
+                <% twitter = 0 %>
+                <% @user_communication.each do |c| %>
+                    <% if c.CommunicationMode == "Phone" and c.Private?.to_s == "1" %>
+                <tr>
+                    <% phone = 1 %>
+                    <td>
+                        <input type="checkbox" name="ChkBx_Phone"
                     id="ChkBx_Phone" value="1" checked = "checked">
-                    <%= label(:lb_Phone, "Phone") %>
-            <% else %>
-                    <input type="checkbox" name="ChkBx_Phone"
-                    id="ChkBx_Phone" value="0">
-                    <%= label(:lb_Phone, "Phone") %>
-            <% end %>
-            <br />
-            <% if c.CommunicationMode == "Email" and c.Private?.to_s == "1" %>
+                        <%= label(:lb_Phone, "Phone") %>
+                    </td>
+                </tr>
+                     <% end %>
+                     <% if c.CommunicationMode == "Email" and c.Private?.to_s == "1" %>
+                <tr>
+                    <% email = 1 %>
+                    <td>
                     <input type="checkbox" name="ChkBx_Email"
                     id="ChkBx_Email" value="1" checked = "checked">
                     <%= label(:lb_Email, "Email") %>
-            <% else %>
-                    <input type="checkbox" name="ChkBx_Email"
-                    id="ChkBx_Email" value="0">
-                    <%= label(:lb_Email, "Email") %>
-            <% end %>
-            <br />
-            <% if c.CommunicationMode == "Skype" and c.Private?.to_s == "1" %>
+                    </td>
+                </tr>
+                    <% end %>
+                    <% if c.CommunicationMode == "Skype" and c.Private?.to_s == "1" %>
+                <tr>
+                    <% skype = 1 %>
+                    <td>
                     <input type="checkbox" name="ChkBx_Skype"
                     id="ChkBx_Skype" value="1" checked = "checked">
                     <%= label(:lb_Skype, "Skype") %>
-            <% else %>
-                    <input type="checkbox" name="ChkBx_Skype"
-                    id="ChkBx_Skype" value="0">
-                    <%= label(:lb_Skype, "Skype") %>
-            <% end %> 
-            <br />
-            <% if c.CommunicationMode == "Website" and c.Private?.to_s == "1" %>
+                    </td>
+                </tr>
+                    <% end %>
+                    <% if c.CommunicationMode == "Website" and c.Private?.to_s == "1" %>
+                <tr>
+                    <% website = 1 %>
+                    <td>
                     <input type="checkbox" name="ChkBx_Website"
                     id="ChkBx_Website" value="1" checked = "checked">
                     <%= label(:lb_Website, "Website") %>
-            <% else %>
-                    <input type="checkbox" name="ChkBx_Website"
-                    id="ChkBx_Website" value="0">
-                    <%= label(:lb_Website, "Website") %>
-            <% end %>
-            <br />
-            <% if c.CommunicationMode == "Twitter" and c.Private?.to_s == "1" %>
+                    </td>
+                </tr>
+                    <% end %>
+                    <% if c.CommunicationMode == "Twitter" and c.Private?.to_s == "1" %>
+                    <tr>
+                        <% twitter = 1 %>
+                        <td>
                     <input type="checkbox" name="ChkBx_Twitter"
                     id="ChkBx_Twitter" value="1" checked = "checked">
                     <%= label(:lb_Twitter, "Twitter") %>
-            <% else %>
-                    <input type="checkbox" name="ChkBx_Twitter"     
-                    id="ChkBx_Twitter" value="0">
-                    <%= label(:lb_Twitter, "Twitter") %>
-            <% end %>
-            <% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <% end %>
+                    <% if phone == 0 %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Phone' %>
+                            <%= label(:lb_Phone, "Phone") %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <% if email == 0 %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Email' %>
+                            <%= label(:lb_Email, "Email") %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <% if skype == 0 %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Skype' %>
+                            <%= label(:lb_Skype, "Skype") %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <% if website == 0 %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Website' %>
+                            <%= label(:lb_Website, "Website") %>
+                        </td>
+                    </tr>
+                    <% end %>
+                    <% if twitter == 0 %>
+                    <tr>
+                        <td>
+                            <%= check_box_tag 'ChkBx_Twitter' %>
+                            <%= label(:lb_Twitter, "Twitter") %>
+                        </td>
+                    </tr>
+                    <% end %>
+            </table>
          </td>
          <td style="vertical-align:top;">
             <div align="left">

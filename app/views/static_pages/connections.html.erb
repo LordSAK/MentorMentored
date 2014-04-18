@@ -73,6 +73,15 @@
                 </tr>
                 <% end %>
             </table>
+                        <table>
+                <tr>
+                    <td>
+                        <div class="button">
+                            <%= link_to "Cancel", rejectconnection_path(:id =>u.RequestFrom), { method: :post, :class => "buttonblck" } %>
+                        </div> 
+                    </td>
+                </tr>
+            </table>
         </td>
     </tr>
 </table>

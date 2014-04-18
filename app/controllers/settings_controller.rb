@@ -18,9 +18,11 @@ class SettingsController < ApplicationController
     if !params[:settings].nil?
       @user_basic.update_attribute(:photo, params[:settings][:photo]) 
     end
-        @blah = params[:ChkBx_Profession]
-  if params[:ChkBx_Profession] == "1"
-    Profession.delete_all(:UserID => current_user.id)
+        
+       Profession.delete_all(:UserID => current_user.id)
+  #    if params[:ChkBx_Profession].to_i == 1
+    @blah = params[:ChkBx_Profession]
+  #  puts "Hassan"
     if !params[:tf_designation].blank?
       params[:tf_designation].each do |keydesignation,designation|
         if !designation.nil?
@@ -40,189 +42,99 @@ class SettingsController < ApplicationController
               @todesigcom = toprof
             end
           end
-          @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom, :Private? => "1" )
+          @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom )
           @Profession.save
         end
       end
     end
-
     if !params[:parameters].blank?
-    params[:parameters].each do |keydesignation, designation|
-      if !designation.nil?
-        @designation = designation
-        puts @designation
-        params[:parametersCompany].each do |keycompany, company|
-          if keydesignation == keycompany
-            @company = company
-          end
-        end  
-        params[:ParametersFromProf].each do |keyfromprof, fromprof|
-          if keydesignation == keyfromprof
-            @from = fromprof
-          end
-        end
-        params[:ParametersToProf].each do |keytopro, toprof|
-          if keydesignation == keytopro
-            @to=toprof          
-          end
-        end
-        @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to, :Private? => "1")
-        @Profession.save
-      end
-    end  
-    end
-  else
-    Profession.delete_all(:UserID => current_user.id)
-    if !params[:tf_designation].blank?
-      params[:tf_designation].each do |keydesignation,designation|
+      params[:parameters].each do |keydesignation, designation|
         if !designation.nil?
-          @desig = designation
-          params[:tf_company].each do |keycompany,company|
+          @designation = designation
+          puts @designation
+          params[:parametersCompany].each do |keycompany, company|
             if keydesignation == keycompany
-              @comp = company
+              @company = company
+            end
+          end  
+          params[:ParametersFromProf].each do |keyfromprof, fromprof|
+            if keydesignation == keyfromprof
+              @from = fromprof
             end
           end
-          params[:tf_fromdesignation].each do |keyfromprof,fromprof|
-            if keydesignation ==  keyfromprof
-              @fromdesigcom = fromprof
+          params[:ParametersToProf].each do |keytopro, toprof|
+            if keydesignation == keytopro
+              @to=toprof          
             end
           end
-          params[:tf_todesignation].each do |keytoprof,toprof|
-            if keydesignation==keytoprof
-              @todesigcom = toprof
-            end
-          end
-          @Profession = Profession.new( :UserID => current_user.id, :Designation => @desig, :Company => @comp, :Job_From => @fromdesigcom, :Job_To => @todesigcom, :Private? => "1" )
-          @Profession.save
+        @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to)
+        @Profession.save
         end
-      end
+      end  
     end
 
-    if !params[:parameters].blank?
-    params[:parameters].each do |keydesignation, designation|
-      if !designation.nil?
-        @designation = designation
-        puts @designation
-        params[:parametersCompany].each do |keycompany, company|
-          if keydesignation == keycompany
-            @company = company
-          end
-        end  
-        params[:ParametersFromProf].each do |keyfromprof, fromprof|
-          if keydesignation == keyfromprof
-            @from = fromprof
-          end
-        end
-        params[:ParametersToProf].each do |keytopro, toprof|
-          if keydesignation == keytopro
-            @to=toprof          
-          end
-        end
-        @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to, :Private? => "0" )
-        @Profession.save
-      end
-    end  
-    end
-  end  
-    @blah2 = params[:ChkBx_Education]
-  if params[:ChkBx_Education].to_s == "1"
+   if params[:ChkBx_Profession].to_i == 1
+    @user_profession.first.update_attribute( :Private?, params[:ChkBx_Profession] )
+   puts "Hassan"
+   elsif params[:ChkBx_Profession].to_i == 0
+    @user_profession.first.update_attribute( :Private?, "0" )
+    puts "Ali"
+   end
+
+
+  #  @blah2 = params[:ChkBx_Education]
+  #if params[:ChkBx_Education].to_s == "1"
     Education.delete_all(:UserID => current_user.id)
     if !params[:tf_education].blank?
         params[:tf_education].each do |keydeg, degree|
         if !degree.nil?
           @degree=degree
           params[:tf_fromeducation].each do |keyfrom, from|
-          if keydeg== keyfrom
-            @from=from
+            if keydeg== keyfrom
+              @from=from
+            end
           end
-        end
 
-        params[:tf_toeducation].each do |keyto, to|
-          if keydeg==keyto
-            @to=to          
+          params[:tf_toeducation].each do |keyto, to|
+            if keydeg==keyto
+              @to=to          
+            end
           end
-        end
-        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private? => "1" )
+        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to )
         @Education.save
       end
-    end
-    end
-    
-    if !params[:parametersSch].blank?
-    params[:parametersSch].each do |keydeg, degree|
-      if !degree.nil?
-        @degree=degree
-        params[:ParametersFromSch].each do |keyfrom, from|
-          if keydeg== keyfrom
-            @from=from
-          end
-        end
-
-        params[:ParametersToSch].each do |keyto, to|
-          if keydeg==keyto
-            @to=to          
-          end
-        end
-        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private? => "1" )
-        @Education.save
-      end
-    end
-    end
-  else
-    Education.delete_all(:UserID => current_user.id)
-    if !params[:tf_education].blank?
-       params[:tf_education].each do |keydeg, degree|
-      if !degree.nil?
-        @degree=degree
-        params[:tf_fromeducation].each do |keyfrom, from|
-          if keydeg== keyfrom
-            @from=from
-          end
-        end
-
-        params[:tf_toeducation].each do |keyto, to|
-          if keydeg==keyto
-            @to=to          
-          end
-        end
-        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private? => "1" )
-        @Education.save
-      end
-    end
-    end
-    
-    if !params[:parametersSch].blank?
-    params[:parametersSch].each do |keydeg, degree|
-      if !degree.nil?
-        @degree=degree
-        params[:ParametersFromSch].each do |keyfrom, from|
-          if keydeg== keyfrom
-            @from=from
-          end
-        end
-
-        params[:ParametersToSch].each do |keyto, to|
-          if keydeg==keyto
-            @to=to          
-          end
-        end
-        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private? => "0" )
-        @Education.save
-      end
-    end
     end
   end
-   
-
-       
-  if ( params[:ChkBx_Phone] == "1") or  (params[:ChkBx_Email] == "1")  or (params[:ChkBx_Skype] == "1")  or  (params[:ChkBx_Website] == "1") or  (params[:ChkBx_Twitter] == "1" )
-    #if ( params[:ChkBx_Phone] == "1" or  params[:ChkBx_Email] == "1" or  params[:ChkBx_Website] == "1"  or  params[:ChkBx_Twitter] == "1" )
-          @publicphone = params[:ChkBx_Phone]
-          @publicemail = params[:ChkBx_Email]
-          @publicskype = params[:ChkBx_Skype]
-          @publicwebsite = params[:ChkBx_Website]
-          @publictwitter = params[:ChkBx_Twitter]
     
+    if !params[:parametersSch].blank?
+    params[:parametersSch].each do |keydeg, degree|
+      if !degree.nil?
+        @degree=degree
+        params[:ParametersFromSch].each do |keyfrom, from|
+          if keydeg== keyfrom
+            @from=from
+          end
+        end
+
+        params[:ParametersToSch].each do |keyto, to|
+          if keydeg==keyto
+            @to=to          
+          end
+        end
+        @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to )
+        @Education.save
+      end
+    end
+    end
+   
+   if params[:ChkBx_Education].to_i == 1
+    @user_education.first.update_attribute( :Private?, params[:ChkBx_Education] )
+   puts "Hassan1"
+   elsif params[:ChkBx_Education].to_i == 0
+    @user_education.first.update_attribute( :Private?, "0" )
+    puts "Ali1"
+   end
+           
     Communication.delete_all(:UserID => current_user.id)     
     if !params[:tf_Phone].blank?
         @Phone = "Phone"
@@ -263,49 +175,31 @@ class SettingsController < ApplicationController
       @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Twitter, :CommunicationDetail => @Twitter_detail, :Private? => @publictwitter, :Preferred => @Twitter_Preferred)
       @communication.save
     end
-  else 
-      Communication.delete_all(:UserID => current_user.id)     
-    if !params[:tf_phone].blank?
-        @Phone = "Phone"
-        @Phone_detail = params[:tf_phone]
-        @Phone_Preferred = "Preferred"
-        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Phone, :CommunicationDetail => @Phone_detail, :Private? => "0", :Preferred => @Phone_Preferred)
-        @communication.save
-    end
+  
+  if params[:ChkBx_Phone].to_i == 1
+    @user_communication.first.update_attribute( :Private?, params[:ChkBx_Phone] )
+   puts "Hassan2"
+  elsif params[:ChkBx_Phone].to_i == 0
+    @user_communication.first.update_attribute( :Private?, "0" )
+    puts "Ali2"
+  end
 
-    if !params[:tf_email].blank?
-        @Email = "Email"
-        @Email_detail = params[:tf_email]
-        @Email_Preferred = "Preferred"
-        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Email, :CommunicationDetail => @Email_detail, :Private? => "0", :Preferred => @Email_Preferred)     
-        @communication.save
-    end
-    
-    if !params[:tf_skype].blank?  
-        @Skype = "Skype"
-        @Skype_detail = params[:tf_skype]
-        @Skype_Preferred = "Preferred"
-        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Skype, :CommunicationDetail => @Skype_detail, :Private? => "0" , :Preferred => @Skype_Preferred)
-        @communication.save 
-    end
-
-    if !params[:tf_website].blank?  
-      @Website = "Website"
-      @Website_detail = params[:tf_website]
-      @Website_Preferred = "Preferred"
-      @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Website, :CommunicationDetail => @Website_detail, :Private? => "0", :Preferred => @Website_Preferred)
-      @communication.save
-    end
-
-    if !params[:tf_twitter].blank?  
-      @Twitter = "Phone"
-      @Twitter_detail = params[:tf_twitter]
-      @Twitter_Preferred = "Preferred"
-      @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Twitter, :CommunicationDetail => @Twitter_detail, :Private? => "0", :Preferred => @Twitter_Preferred)
-      @communication.save
-    end
+  if params[:ChkBx_Email].to_i == 1
+    @user_communication.first.update_attribute( :Private?, params[:ChkBx_Email] )
+   puts "Hassan3"
+  elsif params[:ChkBx_Email].to_i == 0
+    @user_communication.first.update_attribute( :Private?, "0" )
+    puts "Ali3"
   end
     
+  if params[:ChkBx_Skype].to_i == 1
+    @user_communication.second.update_attribute( :Private?, params[:ChkBx_Skype] )
+   puts "Hassan4"
+  elsif params[:ChkBx_Skype].to_i == 0
+    @user_communication.second.update_attribute( :Private?, "0" )
+    puts "Ali4"
+  end
+
     redirect_to "/default"
     #@user = User.new(user_params)
   end

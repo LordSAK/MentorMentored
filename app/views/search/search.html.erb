@@ -83,13 +83,20 @@
             </h2>
 
             <table id="searchResult" width="100%" runat="server">
+              <% if !@user_img.photo.url.blank? %>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <% end %>
                     <% if !@user.nil? %>
                         <% @user.each do |uzr| %>
                           <tr>
                               <td bgcolor="#CCDBE0" width="40%">
-                            
+                            <%= image_tag @user_img.photo.url(:small),:alt => " " %>
                               <br/>
-                              <div><a href = 'profile?id=<%= uzr.id %>'><%= uzr.First_Name + " " + uzr.Last_Name %></a></div>
+                              <div><a style="color:blue;" href = 'profile?id=<%= uzr.id %>'><%= uzr.First_Name + " " + uzr.Last_Name %></a></div>
                               </td>
                               <td bgcolor="#CCDBE0" width="60%" style="text-align:center;">
                               <div class='buttonblck1'><a href='searchings?id=<%= uzr.id %>'>Send Request </a></div>
@@ -103,7 +110,7 @@
                               <td bgcolor="#CCDBE0" width="40%">
                               
                               <br/>
-                              <div><a href = 'profile?id=<%= uzr_join.UserID %>'><%= uzr_join.user.First_Name + " " + uzr_join.user.Last_Name %></a></div>
+                              <div><a style="color:blue;" href = 'profile?id=<%= uzr_join.UserID %>'><%= uzr_join.user.First_Name + " " + uzr_join.user.Last_Name %></a></div>
                               </td>
                               <td bgcolor="#CCDBE0" width="60%" style="text-align:center;">
                               <div class='buttonblck1'><a href='searchings?id=<%= uzr_join.UserID %>'>Send Request </a></div>
