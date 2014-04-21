@@ -17,16 +17,23 @@
 
          </td>
 		   <td>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Phone, { :id => "cb_Phone", :value => "false" }) %>
-            <%= label_tag "Phone" %>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="checkbox inline">
+
+               <%= f.check_box(:chkbx_Phone, { :id => "cb_Phone", :value => "false" }) %>
+               Phone
+            </label>
 	      </td>
 	      <td>
             <%= f.text_field :tf_Phone, :id => "tb_phone" %>
-            <%= f.check_box(:chkbx_Phone_Public, { :id => "Public", :value => "Public"}) %>
-            <%= label_tag "Public" %>
-            <%= f.radio_button(:rb_Phone_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %>
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Phone_Public, { :id => "Public", :value => "Public"}) %>
+               Public
+            </label>
+            <label class="radio inline">
+               <%= f.radio_button(:rb_Phone_Preferred, "Preferred") %>
+      		    Preferred
+             </label>
             <br/>
             <label for="validation_phone" id="errormessage_phone" visible="false" style="font-size:60%; color:red;"></label> 
 	      </td>
@@ -37,15 +44,22 @@
          </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Email, { :id => "cb_Email", :value => "false" }) %>
-            <%= label_tag "Email" %>
+            <label class="checkbox inline">
+               
+               <%= f.check_box(:chkbx_Email, { :id => "cb_Email", :value => "false" }) %>
+               Email
+            </label>
          </td>
          <td>
             <%= f.text_field :tf_Email, :id => "tb_email" %>
-            <%= f.check_box(:chkbx_Email_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Public" %>
-            <%= f.radio_button(:rb_Email_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %>
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Email_Public, { :id => "Public", :value => "Public" }) %>
+               Public
+            </label>
+            <label class="radio inline">
+               <%= f.radio_button(:rb_Email_Preferred, "Preferred") %>
+               <%= label_tag "Preferred" %>
+            </label>
             <br/>
             <label for="validation_email" id="errormessage_email" visible="false" style="font-size:60%; color:red;"></label>  
          </td>
@@ -56,15 +70,22 @@
          </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Skype, { :id => "cb_Skype", :value => "Skype" }) %>
-            <%= label_tag "Skype" %>
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Skype, { :id => "cb_Skype", :value => "Skype" }) %>
+               Skype
+            </label>
          </td>
          <td>
+            
             <%= f.text_field :tf_stype %>
-            <%= f.check_box(:chkbx_Skype_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Public" %>
-            <%= f.radio_button(:rb_Skype_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %> 
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Skype_Public, { :id => "Public", :value => "Public" }) %>
+               Public
+            </label>
+            <label class="radio inline">
+               <%= f.radio_button(:rb_Skype_Preferred, "Preferred") %>
+      		   Preferred
+            </label>
          </td>
 	   </tr>
 	   <tr>
@@ -73,15 +94,21 @@
          </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Website, { :id => "cb_Website", :value => "Website" }) %>
-            <%= label_tag "Website" %>
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Website, { :id => "cb_Website", :value => "Website" }) %>
+               Website
+            </label>
          </td>
          <td>
             <%= f.text_field :tf_Website %>
-            <%= f.check_box(:chkbx_Website_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Public" %>
-            <%= f.radio_button(:rb_Website_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %> 
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Website_Public, { :id => "Public", :value => "Public" }) %>
+               Public
+            </label>
+            <label class="radio inline">
+               <%= f.radio_button(:rb_Website_Preferred, "Preferred") %>
+               Preferred
+            </label>
          </td>
 	   </tr>
 	   <tr>
@@ -90,15 +117,21 @@
          </td>
          <td>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= f.check_box(:chkbx_Twitter, { :id => "cb_Twitter", :value => "Twitter" }) %>
-            <%= label_tag "Twitter" %>
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Twitter, { :id => "cb_Twitter", :value => "Twitter" }) %>
+               Twitter
+            </label>
          </td>
          <td>
             <%= f.text_field :tf_Twitter %>
-            <%= f.check_box(:chkbx_Twitter_Public, { :id => "Public", :value => "Public" }) %>
-            <%= label_tag "Public" %>
-            <%= f.radio_button(:rb_Twitter_Preferred, "Preferred") %>
-      		<%= label_tag "Preferred" %> 
+            <label class="checkbox inline">
+               <%= f.check_box(:chkbx_Twitter_Public, { :id => "Public", :value => "Public" }) %>
+               Public
+            </label>
+            <label class="radio inline">
+               <%= f.radio_button(:rb_Twitter_Preferred, "Preferred") %>
+               Preferred
+            </label>
          </td>
 	   </tr>
 </table>

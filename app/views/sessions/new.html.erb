@@ -9,23 +9,23 @@
 <%= form_for(:session, url: sessions_path,:html => {:id => "signin"}) do |f| %>
 <table width="100%">
   <tr>
-    <td align="right" width="63%">
+    <td align="right" width="68%">
       <label for="validation_all" id="errormessage" visible="false" style="color:red;"></label>
     </td>
-    <td width="37%"></td>
+    <td width="32%"></td>
   </tr>
   <tr>
-    <td align="right" style="color: #212121;" width="63%">
+    <td align="right" style="color: #212121;" width="68%">
       <%= f.text_field :email, :placeholder => "Email", :id => "tf_email" %>
       <br/>
     </td>
-    <td width="37%"></td>
+    <td width="32%"></td>
   </tr>
   <tr>
-    <td align="right" style="color: #212121;" width="63%">
+    <td align="right" style="color: #212121;" width="68%">
           <%= f.password_field :password, :placeholder => "Enter Password", :id => "tf_password" %>
     </td>
-    <td width="37%">
+    <td width="32%">
           <label for="validation_pw" id="errormessage3" visible="false" style="color:red; font-size:x-small;">
     </td>
   </tr>
@@ -35,11 +35,15 @@
   <tr>
     <td width="30%"></td>
     <td align="right">
-      <%= f.radio_button :user_Type, "Mentor", :id => "rb_mentor", :value => "false" %>
-      <%= f.label(:user_Type, "Mentor") %>
+      <label class="radio inline">
+        <%= f.radio_button :user_Type, "Mentor", :id => "rb_mentor", :value => "false" %>
+        Mentor
+      </label>
       &nbsp;&nbsp;
-      <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
-      <%= f.label(:user_Type, "Mentee") %>
+      <label class="radio inline">
+        <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
+        Mentee
+      </label>
     </td>
     <td align="center" width="38%">
       <label for="validation" id="errormessage1" visible="false" style="color:red;"></label> 
@@ -56,16 +60,22 @@
   <tr>
     <td width="13%"></td>
     <td align="right">
-      <%= f.radio_button(:SkillType, "Students",:id => "rb_SkillType") %>
-      <%= f.label(:SkillType, " Students") %>
+      <label class="radio inline">
+        <%= f.radio_button(:SkillType, "Students",:id => "rb_SkillType") %>
+        Students
+      </label>
     </td>
     <td align="center">
-      <%= f.radio_button(:SkillType1, "Entrepreneurs",:id => "rb_SkillType1") %>
-      <%= f.label(:SkillType1, " Entrepreneurs") %>
+      <label class="radio inline">
+        <%= f.radio_button(:SkillType1, "Entrepreneurs",:id => "rb_SkillType1") %>
+        Entrepreneurs
+      </label>
     </td>
     <td align="left">
-      <%= f.radio_button(:SkillType2, "Veterans",:id => "rb_SkillType2") %>
-      <%= f.label(:SkillType2, " Veterans") %>
+      <label class="radio inline">
+        <%= f.radio_button(:SkillType2, "Veterans",:id => "rb_SkillType2") %>
+        Veterans
+      </label>
     </td>
     <td align="center" width="28%">
       <label for="validation" id="errormessage2" visible="false" style="color:red;"></label> 

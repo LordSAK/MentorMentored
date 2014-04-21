@@ -33,13 +33,13 @@
      var year = new Date().getFullYear();
      
 
-      var DDL_fromProfession = "<select name='ParametersFromProf["+ updated_row_num +"]' id='DDL_FromProYear'>";
+      var DDL_fromProfession = "<select name='ParametersFromProf["+ updated_row_num +"]' id='DDL_FromProYear' class='input-small'>";
                 for (var i = year; i >= 1950; --i) {
                     DDL_fromProfession += "<option text='" + i + "' value='" + i + "'>" + i + "</option>";
                 }
                 DDL_fromProfession += "</select>";
 
-                var DDL_ToProfession = "<select name='ParametersToProf["+ updated_row_num +"]'  id='DDL_ToProYear'>";
+                var DDL_ToProfession = "<select name='ParametersToProf["+ updated_row_num +"]'  id='DDL_ToProYear' class='input-small'>";
                 for (var j = year; j >= 1950; --j) {
                     if (j != year) {
                         DDL_ToProfession += "<option text='" + j + "' value='" + j + "'>" + j + "</option>";
@@ -62,7 +62,7 @@
                
 
      
-var controls = "<tr><td align='center'>From "+ DDL_fromProfession + " To "+DDL_ToProfession+ "</td></tr>";
+var controls = "<tr><td align='center'>"+ DDL_fromProfession + " To "+DDL_ToProfession+ "</td></tr>";
 var control = "<tr><td align='center'><button type='button' class='btn_rmv'>Remove</button></td></tr>";
      $('#Controls').append(newRow);
      $('#Controls').append(controls);
@@ -133,12 +133,10 @@ var control = "<tr><td align='center'><button type='button' class='btn_rmv'>Remo
       </tr>
       <tr style = "text-align:center;">
          <td  style="margin-right:60px;">
-            From
-            <%= f.select :fromyear, (1995..Time.now.year).to_a.reverse, :include_blank => {:year => "Select year"} %>
+            
+            <%= f.select :fromyear, (1995..Time.now.year).to_a.reverse, :include_blank => {:year => "Select year"}, :class=>"input-small" %>
             To
-            <%= f.select :toyear, 
-             (1995..Time.now.year-1).to_a.reverse.unshift('Present'), 
-             :include_blank => {:year => "Select year"} %>
+            <%= f.select :toyear, (1995..Time.now.year-1).to_a.reverse.unshift('Present'), :include_blank => {:year => "Select year"},:class=>"input-small" %>
          </td>
       </tr>
       <tr>

@@ -61,25 +61,29 @@
   </tr>
 </table>
 <br/>
-<table align="center" width="100%">
+<table align="center" width="100%" >
   <tr>
     <td align="right" height="35px" style="font-size: large; color: #212121;">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I want to be a
     </td>
     <td align="center" style="font-size: large; color: #212121;">
-      <%= f.radio_button :user_Type, "Mentor", :id => "rb_mentor" %>
-      <%= f.label(:user_Type, "Mentor") %>
+      <label class="radio inline" style="font-size: large">
+        <%= f.radio_button :user_Type, "Mentor", :id => "rb_mentor" %>
+        Mentor
+      </label>
       <br/>
-      <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
-      <%= f.label(:user_Type, "Mentee") %>
+      <label class="radio inline" style="font-size: large">
+        <%= f.radio_button :user_Type, "Mentee", :id => "rb_mentee" %>
+        Mentee
+      </label>
     </td>
+
     <td width="40%" style="text-align:right;">
         <label for="validation_all" id="errormessage1" visible="false" style="color:red;"></label>
     </td>
   </tr>
 </table>
-<table align="center" width="100%">
+<table align="center" width="100%" >
     <tr>
       <td>
       </td>
@@ -89,39 +93,45 @@
         <label for="validation_all" id="errormessage2" visible="false" style="color:red;" ></label>
       </td>
     </tr>
-    <tr>
-      <td width="10%">
+    <tr height="40px">
+      <td width="10%" >
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </td>
-      <td width="20%" align="left" style="vertical-align: bottom; color: #212121;" class="style6">
+      <td width="20%" align="left" style=" color: #212121;" >
+        <label class="checkbox inline" style="font-size:large" >
           <%= f.check_box(:SkillType,{:id => "SkillType",:value => "Students"}) %>
-          <%= f.label(:SkillType, " Students") %>
+          Students
+        </label>
       </td>
-      <td width="">
-          <%= f.select(:user_Need,options_from_collection_for_select(@students, "id", "student_mentor_subjects"), {},:id => "DDL_Students") %>
+      <td >
+          <%= f.select(:user_Need,options_from_collection_for_select(@students, "id", "student_mentor_subjects"), {},:id => "DDL_Students",:style => "margin-top: 10px") %>
       </td>
     </tr>
-    <tr>
+    <tr height="40px">
       <td>
       </td>
       <td>
-        <%= f.check_box(:SkillType1,{:id => "SkillType1", :value =>"Entrepreneurs"} ) %>
-        <%= f.label(:SkillType1, " Entrepreneurs") %>
+        <label class="checkbox inline" style="font-size:large" >
+          <%= f.check_box(:SkillType1,{:id => "SkillType1", :value =>"Entrepreneurs"} ) %>
+          Entrepreneurs
+        </label>
       </td>
       <td>
-        <%= f.select :SkillNeed1,options_from_collection_for_select(@entrepreneurs,"id", "entrepreneurs_mentor_subjects"),{},:id => "DDL_Entrepreneurs" %>
+        <%= f.select :SkillNeed1,options_from_collection_for_select(@entrepreneurs,"id", "entrepreneurs_mentor_subjects"),{},:id => "DDL_Entrepreneurs",:style => "margin-top: 10px" %>
       </td>
     </tr>
       <!--  Business-->
-    <tr>
+    <tr height="50px">
       <td>
       </td>
       <td>
-        <%= f.check_box(:SkillType2,{:id => "SkillType2",:value => "Veterans"}) %>
-        <%= f.label(:SkillType2, " Veterans") %>
+        <label class="checkbox inline" style="font-size:large" >
+          <%= f.check_box(:SkillType2,{:id => "SkillType2",:value => "Veterans"}) %>
+          Veterans
+        </label>
       </td>
       <td>
-        <%= f.select :skillNeed2,options_from_collection_for_select(@veterans,"id","veteran_mentor_subjects"),{},:id => "DDL_Veterans" %>
+        <%= f.select :skillNeed2,options_from_collection_for_select(@veterans,"id","veteran_mentor_subjects"),{},:id => "DDL_Veterans",:style => "margin-top: 10px" %>
       </td>
       <!--   veterans-->
       
@@ -189,9 +199,9 @@
       </td>
     </tr>
   </tabie>
-  <table align="center" width="100%">
+  <table align="center" width="100%" style="margin-left:35px">
     <tr>
-      <td align="center"><br/>
+      <td align="center" ><br/>
         <%= f.file_field :photo %>
       </td>
     </tr>

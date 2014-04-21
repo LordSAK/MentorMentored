@@ -24,6 +24,8 @@ gem 'jquery-ui-rails'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem "paperclip", "~> 4.1"
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'sprockets'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

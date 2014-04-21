@@ -73,13 +73,15 @@ class SettingsController < ApplicationController
       end  
     end
 
-   if params[:ChkBx_Profession].to_i == 1
-    @user_profession.first.update_attribute( :Private?, params[:ChkBx_Profession] )
-   puts "Hassan"
-   elsif params[:ChkBx_Profession].to_i == 0
-    @user_profession.first.update_attribute( :Private?, "0" )
-    puts "Ali"
-   end
+    if !@user_profession.blank? 
+      if params[:ChkBx_Profession].to_i == 1
+        @user_profession.first.update_attribute( :Private?, params[:ChkBx_Profession] )
+        puts "Hassan"
+      elsif params[:ChkBx_Profession].to_i == 0
+        @user_profession.first.update_attribute( :Private?, "0" )
+        puts "Ali"
+      end
+    end
 
 
   #  @blah2 = params[:ChkBx_Education]
@@ -126,14 +128,16 @@ class SettingsController < ApplicationController
       end
     end
     end
-   
-   if params[:ChkBx_Education].to_i == 1
-    @user_education.first.update_attribute( :Private?, params[:ChkBx_Education] )
-   puts "Hassan1"
-   elsif params[:ChkBx_Education].to_i == 0
-    @user_education.first.update_attribute( :Private?, "0" )
-    puts "Ali1"
-   end
+
+    if !@user_education.blank?
+      if params[:ChkBx_Education].to_i == 1
+        @user_education.first.update_attribute( :Private?, params[:ChkBx_Education] )
+        puts "Hassan1"
+      elsif params[:ChkBx_Education].to_i == 0
+        @user_education.first.update_attribute( :Private?, "0" )
+        puts "Ali1"
+      end
+    end
            
     Communication.delete_all(:UserID => current_user.id)     
     if !params[:tf_Phone].blank?
@@ -176,28 +180,30 @@ class SettingsController < ApplicationController
       @communication.save
     end
   
-  if params[:ChkBx_Phone].to_i == 1
-    @user_communication.first.update_attribute( :Private?, params[:ChkBx_Phone] )
-   puts "Hassan2"
-  elsif params[:ChkBx_Phone].to_i == 0
-    @user_communication.first.update_attribute( :Private?, "0" )
-    puts "Ali2"
-  end
+  if !@user_communication.blank?
+    if params[:ChkBx_Phone].to_i == 1
+      @user_communication.first.update_attribute( :Private?, params[:ChkBx_Phone] )
+      puts "Hassan2"
+    elsif params[:ChkBx_Phone].to_i == 0
+      @user_communication.first.update_attribute( :Private?, "0" )
+      puts "Ali2"
+    end
 
-  if params[:ChkBx_Email].to_i == 1
-    @user_communication.first.update_attribute( :Private?, params[:ChkBx_Email] )
-   puts "Hassan3"
-  elsif params[:ChkBx_Email].to_i == 0
-    @user_communication.first.update_attribute( :Private?, "0" )
-    puts "Ali3"
-  end
+    if params[:ChkBx_Email].to_i == 1
+      @user_communication.first.update_attribute( :Private?, params[:ChkBx_Email] )
+      puts "Hassan3"
+    elsif params[:ChkBx_Email].to_i == 0
+      @user_communication.first.update_attribute( :Private?, "0" )
+      puts "Ali3"
+    end
     
-  if params[:ChkBx_Skype].to_i == 1
-    @user_communication.second.update_attribute( :Private?, params[:ChkBx_Skype] )
-   puts "Hassan4"
-  elsif params[:ChkBx_Skype].to_i == 0
-    @user_communication.second.update_attribute( :Private?, "0" )
-    puts "Ali4"
+    if params[:ChkBx_Skype].to_i == 1
+      @user_communication.second.update_attribute( :Private?, params[:ChkBx_Skype] )
+      puts "Hassan4"
+    elsif params[:ChkBx_Skype].to_i == 0
+      @user_communication.second.update_attribute( :Private?, "0" )
+      puts "Ali4"
+    end
   end
 
     redirect_to "/default"

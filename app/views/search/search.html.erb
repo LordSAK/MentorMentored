@@ -32,13 +32,13 @@
                <td align="center">
                   <% if current_user.SkillType== "1" %>
                     <%= select_tag 'Interest', 
-                  options_from_collection_for_select(@students, :id, :student_mentor_subjects), :style => "width:160px;" %>
+                  options_from_collection_for_select(@students, :id, :student_mentor_subjects) %>
                   <% elsif current_user.SkillType1=="1" %>
                     <%= select_tag 'Interest', 
-                  options_from_collection_for_select(@students, :id, :entrepreneurs_mentor_subjects), :style => "width:160px;" %>
+                  options_from_collection_for_select(@students, :id, :entrepreneurs_mentor_subjects) %>
                   <% elsif current_user.SkillType2=="1" %>
                     <%= select_tag 'Interest', 
-                  options_from_collection_for_select(@students, :id, :veteran_mentor_subjects), :style => "width:160px;" %>
+                  options_from_collection_for_select(@students, :id, :veteran_mentor_subjects) %>
                   <% end %>
       
                   

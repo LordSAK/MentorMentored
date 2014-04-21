@@ -1,6 +1,6 @@
 <%= form_for :profile, :url => { :method => :get, :action => :profile } do |f| %>
 
-<table align="center" width="85%" style=" margin-top: 30px; margin-left:55px; margin-bottom:30px">
+<table align="center" width="85%" style=" margin-top: 30px; margin-left:55px; margin-bottom:30px" border="2">
     <% if !@user.photo.url.blank? %>
     <tr>
         <td>
@@ -17,102 +17,74 @@
         </td>
         <td width="60%" style="background-color:#00BFFF;font-size: large">
             <% @user_education.each do |user_edu| %>
-            <% if user_edu.Private? == "1" %>
+            
             <table style="color:white;">
                 <tr>
                     <td>
-	                    <%= f.label(:schoolname, user_edu.SchoolName) %>
+	                    <%=  user_edu.SchoolName %>
                     </td>
                     <td>
-                        <%= f.label(:schoolfrom, user_edu.SchoolFrom) %>
+                        &nbsp;&nbsp;Class of <%= user_edu.SchoolFrom %>
                     </td>
                 </tr>
             </table>
-            <% else %>
-            <table style="color:white;">
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-            </table>	
-            <% end %>
+            
             <% end %>
         </td>
     </tr>
     <tr>
         <td width="40%" style="background-color: #FFFFFF;font-size: large" class="style1">
 	        <% @user_communication.each do |user_com| %>
-            <% if user_com.Private? == "1" %>
             <table style="color:Gray;">
                 <tr>
 	                <td>
-	                	<%= f.label(:CommunicationMode, user_com.CommunicationMode ) %>
+	                	<%= user_com.CommunicationMode  %>
 	                </td>
 	                <td>
-	                	:<%= f.label(:CommunicationDetail, user_com.CommunicationDetail ) %>
+	                	:&nbsp;<%=  user_com.CommunicationDetail  %>
 	                </td>
                 </tr>
             </table>
-            <% else %>
-            <table style="color:Gray;">
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        
-                    </td>
-                </tr>
-            </table>
-            <% end %>
+            
             <% end %>
         </td>
         <td width="60%" style="background-color:#00BFFF;font-size: large">
             <% @user_profession.each do |user_pro| %>
-            <% if user_pro.Private? == "1" %>
+            
             <table style="color:white;">
                 <tr>
                     <td>
-                    	<%= f.label(:Designation, user_pro.Designation) %>
+                    	<%= user_pro.Designation %>
                     </td>
                     
                     <td>
-                    at  <%= f.label(:Company, user_pro.Company) %>
+                    &nbsp;at&nbsp;&nbsp;<%= user_pro.Company %>
                     </td>
                 </tr> 
             </table>
-            <% else %>
-            <table style="color:white;">
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr> 
-            </table>
-            <% end %> 
+            
             <% end %> 
         </td>
     </tr>
     <tr>
-        <td width="40%" style="background-color: #FFFFFF;font-size: large" class="style1">
-            <%= f.label(:Availability) %>:
+        <td width="40%" style="background-color: #FFFFFF;font-size: large" >
+            <% if !@user_availability.nil? %>
+            Availability
             <% @user_availability.each do |user_avail| %>
-            <table style="color:Gray;">
+            <table width="100%" style="color:Gray;">
                 <tr>
                     <td>
-                    	<%= f.label(:userdays, user_avail.UserDays) %>
+                    	<%= user_avail.UserDays %>
+                    </td>
+                    <td align="right">
+                        <%= user_avail.TimeFrom+ " to" %>
                     </td>
                     <td>
-                        <%= f.label(:timefrom, user_avail.TimeFrom) %> to
-                    </td>
-                    <td>
-                        <%= f.label(:timeto, user_avail.TimeTo) %>
+                        &nbsp;<%= user_avail.TimeTo %>
                     </td>
                 </tr> 
             </table>
+            <% end %>
             <% end %>
             <br/>
             About:      <%= f.label(:about, @user.First_Name + " " + @user.Last_Name, :style => "color:Gray;") %>
@@ -122,21 +94,21 @@
                 <tr>
                     <td>
                         <% if !@user.user_City.nil? %>
-                        <%= f.label(:city, @user.user_City) %>
+                        <%= @user.user_City %>
                         <% else %>
                         
                         <% end %>
                     </td>
                     <td>
-                        <% if !@user.user_State.nil? %>
-                        <%= f.label(:state, @user.user_State) %>
+                        <% if !@user.user_State=="State" %>
+                        &nbsp;<%= @user.user_State %>
                         <% else %>
                         
                         <% end %>
                     </td>
                     <td>
                         <% if !@user.user_Zip.nil? %>
-                        <%= f.label(:zip, @user.user_Zip) %>
+                        &nbsp;<%=  @user.user_Zip %>
                         <% else %>
                         
                         <% end %>

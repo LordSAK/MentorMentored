@@ -56,7 +56,7 @@
                 + input1 + "</td></tr>";
 
      
-var controls = "<tr><td>From "+ DDL_fromProfession + " To "+DDL_ToProfession+ "</td></tr>";
+var controls = "<tr><td>"+ DDL_fromProfession + " To "+DDL_ToProfession+ "</td></tr>";
 var control = "<tr><td align='center'><button type='button' class='btn_rmv'>Remove</button></td></tr>";
 
      $('#Controls').append(newRow);
@@ -112,7 +112,7 @@ var control = "<tr><td align='center'><button type='button' class='btn_rmv'>Remo
       </tr>
       <tr style = "text-align:center;">
          <td>
-            From
+            
             <%= f.select :fromyear, (1950..Time.now.year).to_a.reverse, :include_blank => {:year => "Select year"} %>
             To
             <%= f.select :toyear, 
