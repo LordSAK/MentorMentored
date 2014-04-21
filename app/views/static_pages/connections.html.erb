@@ -16,10 +16,10 @@
                 <% @user_communication.each do |c| %>
                     <tr>
                         <td>
-                            <%= f.label(:communication, c.CommunicationMode ) %>
+                             <%= %>c.CommunicationMode 
                         </td>
                         <td>
-                            :<%= f.label(:communication, c.CommunicationDetail ) %>
+                            :&nbsp; <%= c.CommunicationDetail %>
                         </td>
                     </tr>
                 <%end%>        
@@ -30,15 +30,15 @@
                 <% user_availability.each do |a| %>
                 <tr>
                     <td>
-                        <%= f.label(:userdays, a.UserDays ) %>
+                        <%=  a.UserDays  %>
                     </td>
                     <td></td>
                     <td>
-                        from <%= f.label(:timefrom, a.TimeFrom ) %>
+                        &nbsp;from <%=  a.TimeFrom  %>
                     </td>
                     <td></td>
                     <td>
-                        to <%= f.label(:timeto, a.TimeTo ) %>
+                        &nbsp;to <%=  a.TimeTo  %>
                     </td>
                 </tr>
                 <% end %>
@@ -49,11 +49,11 @@
                 <% user_education.each do |e| %>
                 <tr>
                     <td>
-                        <%= f.label(:schoolname, e.SchoolName ) %>
+                        <%=  e.SchoolName %>
                     </td>
                     <td></td>
                     <td>
-                        class of <%= f.label(:schoolto, e.SchoolTo ) %>
+                        &nbsp;class of <%= e.SchoolTo  %>
                     </td>
                 </tr>
                 <% end %>
@@ -64,11 +64,11 @@
                 <% user_profession.each do |p| %>
                 <tr>
                     <td>
-                        <%= f.label(:designation, p.Designation ) %>
+                        <%=  p.Designation  %>
                     </td>
                     <td></td>
                     <td>
-                        at <%= f.label(:jobto, p.Job_To ) %>
+                        &nbsp;at <%=  p.Job_To  %>
                     </td>
                 </tr>
                 <% end %>
