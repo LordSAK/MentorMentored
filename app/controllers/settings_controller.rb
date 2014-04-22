@@ -209,6 +209,22 @@ class SettingsController < ApplicationController
       c.update_attribute( :Private, "0" )
       puts "Ali4"
     end
+
+    if params[:ChkBx_Website].to_i == 1
+      c.update_attribute( :Private, params[:ChkBx_Website] )
+      puts "Hassan4"
+    elsif params[:ChkBx_Website].to_i == 0
+      c.update_attribute( :Private, "0" )
+      puts "Ali4"
+    end
+
+    if params[:ChkBx_Twitter].to_i == 1
+      c.update_attribute( :Private, params[:ChkBx_Twitter] )
+      puts "Hassan4"
+    elsif params[:ChkBx_Twitter].to_i == 0
+      c.update_attribute( :Private, "0" )
+      puts "Ali4"
+    end
   end
 end
 
