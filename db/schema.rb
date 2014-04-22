@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418094427) do
+ActiveRecord::Schema.define(version: 20140422065406) do
 
   create_table "availabilities", force: true do |t|
     t.integer  "UserID"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140418094427) do
     t.integer  "UserID"
     t.string   "CommunicationMode"
     t.string   "CommunicationDetail"
-    t.string   "Private?"
+    t.string   "Private"
     t.string   "Preferred"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140418094427) do
     t.string   "SchoolName"
     t.string   "SchoolFrom"
     t.string   "SchoolTo"
-    t.string   "Private?"
+    t.string   "Private"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140418094427) do
     t.string   "Company"
     t.string   "Job_From"
     t.string   "Job_To"
-    t.string   "Private?"
+    t.string   "Private"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

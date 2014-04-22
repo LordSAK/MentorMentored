@@ -113,11 +113,9 @@ var control = "<tr><td align='center'><button type='button' class='btn_rmv'>Remo
       <tr style = "text-align:center;">
          <td>
             
-            <%= f.select :fromyear, (1950..Time.now.year).to_a.reverse, :include_blank => {:year => "Select year"} %>
+            <%= f.select(:fromyear, options_for_select((1950..Time.now.year).to_a.reverse), {:include_blank => "Select year"},{:class => "input-medium"}) %>
             To
-            <%= f.select :toyear, 
-             (1995..Time.now.year-1).to_a.reverse.unshift('Present'), 
-             :include_blank => {:year => "Select year"} %>
+             <%= f.select(:toyear, options_for_select((1995..Time.now.year-1).to_a.reverse.unshift('Present')), {:include_blank => "Select year"},{:class=>"input-medium"}) %>
          </td>
       </tr>
          <tr>

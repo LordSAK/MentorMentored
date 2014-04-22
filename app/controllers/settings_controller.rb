@@ -75,10 +75,10 @@ class SettingsController < ApplicationController
 
     if !@user_profession.blank? 
       if params[:ChkBx_Profession].to_i == 1
-        @user_profession.first.update_attribute( :Private?, params[:ChkBx_Profession] )
+        @user_profession.first.update_attribute( :Private, params[:ChkBx_Profession] )
         puts "Hassan"
       elsif params[:ChkBx_Profession].to_i == 0
-        @user_profession.first.update_attribute( :Private?, "0" )
+        @user_profession.first.update_attribute( :Private, "0" )
         puts "Ali"
       end
     end
@@ -131,10 +131,10 @@ class SettingsController < ApplicationController
 
     if !@user_education.blank?
       if params[:ChkBx_Education].to_i == 1
-        @user_education.first.update_attribute( :Private?, params[:ChkBx_Education] )
+        @user_education.first.update_attribute( :Private, params[:ChkBx_Education] )
         puts "Hassan1"
       elsif params[:ChkBx_Education].to_i == 0
-        @user_education.first.update_attribute( :Private?, "0" )
+        @user_education.first.update_attribute( :Private, "0" )
         puts "Ali1"
       end
     end
@@ -144,7 +144,7 @@ class SettingsController < ApplicationController
         @Phone = "Phone"
         @Phone_detail = params[:tf_phone]
         @Phone_Preferred = "Preferred"
-        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Phone, :CommunicationDetail => @Phone_detail, :Private? => @publicphone, :Preferred => @Phone_Preferred)
+        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Phone, :CommunicationDetail => @Phone_detail, :Private => @publicphone, :Preferred => @Phone_Preferred)
         @communication.save
     end
 
@@ -152,7 +152,7 @@ class SettingsController < ApplicationController
         @Email = "Email"
         @Email_detail = params[:tf_email]
         @Email_Preferred = "Preferred"
-        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Email, :CommunicationDetail => @Email_detail, :Private? => @publicemail, :Preferred => @Email_Preferred)     
+        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Email, :CommunicationDetail => @Email_detail, :Private => @publicemail, :Preferred => @Email_Preferred)     
         @communication.save
     end
     
@@ -160,7 +160,7 @@ class SettingsController < ApplicationController
         @Skype = "Skype"
         @Skype_detail = params[:tf_skype]
         @Skype_Preferred = "Preferred"
-        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Skype, :CommunicationDetail => @Skype_detail, :Private? => @publicskype, :Preferred => @Skype_Preferred)
+        @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Skype, :CommunicationDetail => @Skype_detail, :Private => @publicskype, :Preferred => @Skype_Preferred)
         @communication.save 
     end
 
@@ -168,7 +168,7 @@ class SettingsController < ApplicationController
       @Website = "Website"
       @Website_detail = params[:tf_website]
       @Website_Preferred = "Preferred"
-      @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Website, :CommunicationDetail => @Website_detail, :Private? => @publicwebsite, :Preferred => @Website_Preferred)
+      @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Website, :CommunicationDetail => @Website_detail, :Private => @publicwebsite, :Preferred => @Website_Preferred)
       @communication.save
     end
 
@@ -176,32 +176,32 @@ class SettingsController < ApplicationController
       @Twitter = "Twitter"
       @Twitter_detail = params[:tf_twitter]
       @Twitter_Preferred = "Preferred"
-      @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Twitter, :CommunicationDetail => @Twitter_detail, :Private? => @publictwitter, :Preferred => @Twitter_Preferred)
+      @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Twitter, :CommunicationDetail => @Twitter_detail, :Private => @publictwitter, :Preferred => @Twitter_Preferred)
       @communication.save
     end
   
   if !@user_communication.blank?
     if params[:ChkBx_Phone].to_i == 1
-      @user_communication.first.update_attribute( :Private?, params[:ChkBx_Phone] )
+      @user_communication.first.update_attribute( :Private, params[:ChkBx_Phone] )
       puts "Hassan2"
     elsif params[:ChkBx_Phone].to_i == 0
-      @user_communication.first.update_attribute( :Private?, "0" )
+      @user_communication.first.update_attribute( :Private, "0" )
       puts "Ali2"
     end
 
     if params[:ChkBx_Email].to_i == 1
-      @user_communication.first.update_attribute( :Private?, params[:ChkBx_Email] )
+      @user_communication.first.update_attribute( :Private, params[:ChkBx_Email] )
       puts "Hassan3"
     elsif params[:ChkBx_Email].to_i == 0
-      @user_communication.first.update_attribute( :Private?, "0" )
+      @user_communication.first.update_attribute( :Private, "0" )
       puts "Ali3"
     end
     
     if params[:ChkBx_Skype].to_i == 1
-      @user_communication.second.update_attribute( :Private?, params[:ChkBx_Skype] )
+      @user_communication.second.update_attribute( :Private, params[:ChkBx_Skype] )
       puts "Hassan4"
     elsif params[:ChkBx_Skype].to_i == 0
-      @user_communication.second.update_attribute( :Private?, "0" )
+      @user_communication.second.update_attribute( :Private, "0" )
       puts "Ali4"
     end
   end

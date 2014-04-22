@@ -511,12 +511,12 @@
                     <% @user_profession.each do |p| %>
                         <tr> 
                             <td>
-                            <% if !p.Designation.blank? and p.Private?.to_s == "1" %>
+                            <% if !p.Designation.blank? and p.Private.to_s == "1" %>
                                 <label class="checkbox inline">
                                     <input type="checkbox" name="ChkBx_Profession" id="ChkBx_Profession" value="1" checked = "checked">
                                     Profession
                                 </label>
-                            <% elsif !p.Designation.blank? and p.Private?.to_s == "0" %>
+                            <% elsif !p.Designation.blank? and p.Private.to_s == "0" %>
                                 <label class="checkbox inline">
                                     <%= check_box_tag 'ChkBx_Profession' %>
                                     Profession
@@ -541,13 +541,13 @@
                     <% @user_education.each do |e| %>
                         <tr>
                             <td>
-                            <% if !e.SchoolName.blank? and e.Private?.to_s == "1" %>
+                            <% if !e.SchoolName.blank? and e.Private.to_s == "1" %>
                                 <label class="checkbox inline">
                                     <input type="checkbox" name="ChkBx_Education"
                                     id="ChkBx_Education" value="1" checked = "checked">
                                     Education
                                 </label>
-                            <% elsif !e.SchoolName.blank? and e.Private?.to_s == "0" %>
+                            <% elsif !e.SchoolName.blank? and e.Private.to_s == "0" %>
                                 <label class="checkbox inline">
                                     <%= check_box_tag 'ChkBx_Education' %>
                                     Education
@@ -565,7 +565,7 @@
                 <% website = 0 %>
                 <% twitter = 0 %>
                 <% @user_communication.each do |c| %>
-                    <% if c.CommunicationMode == "Phone" and c.Private?.to_s == "1" %>
+                    <% if c.CommunicationMode == "Phone" and c.Private.to_s == "1" %>
                 <tr>
                     <% phone = 1 %>
                     <td>
@@ -576,7 +576,7 @@
                     </td>
                 </tr>
                      <% end %>
-                     <% if c.CommunicationMode == "Email" and c.Private?.to_s == "1" %>
+                     <% if c.CommunicationMode == "Email" and c.Private.to_s == "1" %>
                 <tr>
                     <% email = 1 %>
                     <td>
@@ -587,7 +587,7 @@
                     </td>
                 </tr>
                     <% end %>
-                    <% if c.CommunicationMode == "Skype" and c.Private?.to_s == "1" %>
+                    <% if c.CommunicationMode == "Skype" and c.Private.to_s == "1" %>
                 <tr>
                     <% skype = 1 %>
                     <td>
@@ -598,7 +598,7 @@
                     </td>
                 </tr>
                     <% end %>
-                    <% if c.CommunicationMode == "Website" and c.Private?.to_s == "1" %>
+                    <% if c.CommunicationMode == "Website" and c.Private.to_s == "1" %>
                 <tr>
                     <% website = 1 %>
                     <td>
@@ -609,7 +609,7 @@
                     </td>
                 </tr>
                     <% end %>
-                    <% if c.CommunicationMode == "Twitter" and c.Private?.to_s == "1" %>
+                    <% if c.CommunicationMode == "Twitter" and c.Private.to_s == "1" %>
                     <tr>
                         <% twitter = 1 %>
                         <td>
@@ -683,7 +683,7 @@
             <tr>
                 <td style="text-align:left;">    
                     <div class="button">
-                        <a id="DeleteMyAccount" class="buttonSearch">Delete My Account</a>
+                        <a id="DeleteMyAccount" class="buttonSearch">Delete Account</a>
                     </div>
                 </td>
             </tr>
