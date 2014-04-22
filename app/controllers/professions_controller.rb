@@ -11,7 +11,7 @@ before_action :signed_in_user, only: [:create, :destroy]
        @Company = params[:Professions][:tf_Company]
        @From = params[:Professions][:fromyear]
        @To = params[:Professions][:toyear]
-       @Profession = Profession.new( :UserID => current_user.id, :Designation => @Designation, :Company => @Company, :Job_From => @From, :Job_To => @To)
+       @Profession = Profession.new( :UserID => current_user.id, :Designation => @Designation, :Company => @Company, :Job_From => @From, :Job_To => @To, :Private => "0")
        @Profession = @Profession.save
     end
     puts params[:valPro]
@@ -35,7 +35,7 @@ before_action :signed_in_user, only: [:create, :destroy]
               @to=toprof          
             end
           end
-          @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to)
+          @Profession = Profession.new( :UserID => current_user.id, :Designation => @designation, :Company => @company, :Job_From => @from, :Job_To => @to,:Private => "0")
           @Profession.save
         end
       end  

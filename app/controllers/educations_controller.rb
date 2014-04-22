@@ -9,7 +9,7 @@ before_action :signed_in_user, only: [:create, :destroy]
   	 @Degree = params[:Educations][:tf_Degree]
   	 @From = params[:Educations][:fromyear]
   	 @To = params[:Educations][:toyear]
-  	 @Education = Education.new( :UserID => current_user.id, :SchoolName => @Degree, :SchoolFrom => @From, :SchoolTo => @To )
+  	 @Education = Education.new( :UserID => current_user.id, :SchoolName => @Degree, :SchoolFrom => @From, :SchoolTo => @To, :Private => "0" )
   	 @Education = @Education.save
   	end
     if !params[:parametersSch].blank?
@@ -27,7 +27,7 @@ before_action :signed_in_user, only: [:create, :destroy]
               @to=to          
             end
           end
-          @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to)
+          @Education = Education.new( :UserID => current_user.id, :SchoolName => @degree, :SchoolFrom => @from, :SchoolTo => @to, :Private => "0")
           @Education.save
         end
       end

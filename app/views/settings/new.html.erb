@@ -508,15 +508,15 @@
                         </td>
                     </tr>
                 <% else %>
-                    <% @user_profession.each do |p| %>
+                    
                         <tr> 
                             <td>
-                            <% if !p.Designation.blank? and p.Private.to_s == "1" %>
+                            <% if !@user_profession.first.Designation.blank? and @user_profession.first.Private.to_s == "1" %>
                                 <label class="checkbox inline">
                                     <input type="checkbox" name="ChkBx_Profession" id="ChkBx_Profession" value="1" checked = "checked">
                                     Profession
                                 </label>
-                            <% elsif !p.Designation.blank? and p.Private.to_s == "0" %>
+                            <% elsif !@user_profession.first.Designation.blank? and @user_profession.first.Private.to_s == "0" %>
                                 <label class="checkbox inline">
                                     <%= check_box_tag 'ChkBx_Profession' %>
                                     Profession
@@ -524,7 +524,7 @@
                              <% end %>
                             </td>
                         </tr>
-                    <% end %>
+                    
                 <% end %>
             </table>
             <table >
@@ -538,16 +538,16 @@
                         </td>
                     </tr>
                 <% else %>
-                    <% @user_education.each do |e| %>
+                    
                         <tr>
                             <td>
-                            <% if !e.SchoolName.blank? and e.Private.to_s == "1" %>
+                            <% if !@user_education.first.SchoolName.blank? and @user_education.first.Private.to_s == "1" %>
                                 <label class="checkbox inline">
                                     <input type="checkbox" name="ChkBx_Education"
                                     id="ChkBx_Education" value="1" checked = "checked">
                                     Education
                                 </label>
-                            <% elsif !e.SchoolName.blank? and e.Private.to_s == "0" %>
+                            <% elsif !@user_education.first.SchoolName.blank? and @user_education.first.Private.to_s == "0" %>
                                 <label class="checkbox inline">
                                     <%= check_box_tag 'ChkBx_Education' %>
                                     Education
@@ -555,7 +555,7 @@
                             <% end %>
                             </td>
                         </tr>
-                    <% end %>
+                    
                 <% end %>
             </table>
             <table>

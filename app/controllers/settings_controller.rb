@@ -7,9 +7,9 @@ class SettingsController < ApplicationController
     @students=Students.all
     @entrepreneurs=Entrepreneurs.all
     @veterans=Veterans.all
-    @user_profession=Profession.where(:UserID => current_user.id)
-    @user_education=Education.where(:UserID => current_user.id)
-    @user_communication=Communication.where(:UserID => current_user.id)
+    
+    
+    
     
     #requestfrom.first.update_attribute(:IsApproved, "2")
     @user_basic.update_attribute( :user_Need, params[:user_Need])
@@ -72,16 +72,18 @@ class SettingsController < ApplicationController
         end
       end  
     end
-
+    @user_profession=Profession.where(:UserID => current_user.id)
     if !@user_profession.blank? 
+      @user_profession.each do |p|
       if params[:ChkBx_Profession].to_i == 1
-        @user_profession.first.update_attribute( :Private, params[:ChkBx_Profession] )
+        p.update_attribute( :Private, params[:ChkBx_Profession] )
         puts "Hassan"
       elsif params[:ChkBx_Profession].to_i == 0
-        @user_profession.first.update_attribute( :Private, "0" )
+        p.update_attribute( :Private, "0" )
         puts "Ali"
       end
     end
+  end
 
 
   #  @blah2 = params[:ChkBx_Education]
@@ -128,16 +130,18 @@ class SettingsController < ApplicationController
       end
     end
     end
-
+    @user_education=Education.where(:UserID => current_user.id)
     if !@user_education.blank?
+      @user_education.each do |e|
       if params[:ChkBx_Education].to_i == 1
-        @user_education.first.update_attribute( :Private, params[:ChkBx_Education] )
+        e.update_attribute( :Private, params[:ChkBx_Education] )
         puts "Hassan1"
       elsif params[:ChkBx_Education].to_i == 0
-        @user_education.first.update_attribute( :Private, "0" )
+        e.update_attribute( :Private, "0" )
         puts "Ali1"
       end
     end
+  end
            
     Communication.delete_all(:UserID => current_user.id)     
     if !params[:tf_Phone].blank?
@@ -179,32 +183,34 @@ class SettingsController < ApplicationController
       @communication=Communication.new( :UserID => current_user.id, :CommunicationMode => @Twitter, :CommunicationDetail => @Twitter_detail, :Private => @publictwitter, :Preferred => @Twitter_Preferred)
       @communication.save
     end
-  
+  @user_communication=Communication.where(:UserID => current_user.id)
   if !@user_communication.blank?
+    @user_communication.each do |c|
     if params[:ChkBx_Phone].to_i == 1
-      @user_communication.first.update_attribute( :Private, params[:ChkBx_Phone] )
+      c.update_attribute( :Private, params[:ChkBx_Phone] )
       puts "Hassan2"
     elsif params[:ChkBx_Phone].to_i == 0
-      @user_communication.first.update_attribute( :Private, "0" )
+      c.update_attribute( :Private, "0" )
       puts "Ali2"
     end
 
     if params[:ChkBx_Email].to_i == 1
-      @user_communication.first.update_attribute( :Private, params[:ChkBx_Email] )
+      c.update_attribute( :Private, params[:ChkBx_Email] )
       puts "Hassan3"
     elsif params[:ChkBx_Email].to_i == 0
-      @user_communication.first.update_attribute( :Private, "0" )
+      c.update_attribute( :Private, "0" )
       puts "Ali3"
     end
     
     if params[:ChkBx_Skype].to_i == 1
-      @user_communication.second.update_attribute( :Private, params[:ChkBx_Skype] )
+      c.update_attribute( :Private, params[:ChkBx_Skype] )
       puts "Hassan4"
     elsif params[:ChkBx_Skype].to_i == 0
-      @user_communication.second.update_attribute( :Private, "0" )
+      c.update_attribute( :Private, "0" )
       puts "Ali4"
     end
   end
+end
 
     redirect_to "/default"
     #@user = User.new(user_params)
