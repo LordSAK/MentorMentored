@@ -16,7 +16,7 @@ class ProfileController < ApplicationController
        @user_education = Education.where('"UserID" = ? and "Private" = ?', params[:id],"1")
        @user_communication = Communication.where('"UserID" = ? and "Private" = ?',params[:id],"1")
        @user_profession = Profession.where('"UserID" =  ? and "Private" = ?',params[:id],"1")
-       @user_availability = Availability.where('"UserID" = ? and "Private" = ?',params[:id],"1")
+       @user_availability = Availability.where('"UserID" = ?',params[:id])
   	end
   end
 end
