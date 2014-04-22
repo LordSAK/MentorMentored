@@ -721,13 +721,13 @@
 
 <div id="dialog" title="Reset Password" hidden="true">
                 <%= form_tag({ controller: "settings", action: "reset_password"}) do |f| %>
-                    <table style="text-align:center; vertical-align:top;">
+                    <table align="center" width="100%" style="text-align:center; vertical-align:top;">
                         <tr>
-                            <td>
-                                <div>
-                                    <%= label_tag(:currentpassword) %>
+                            <td align="center">
+                                
+                                    <%= label_tag(:currentpassword,"Current Password") %>
                                     <%= password_field_tag 'tf_currentpassword' %>
-                                </div>
+                                
                             </td>
                         </tr>
                         <tr>
@@ -776,7 +776,7 @@ $(document).ready(function() {
             </script>
 <div id="dialog2" title="Delete My Account" hidden="true">
                 <%= form_tag({ controller: "settings", action: "delete_my_account"}) do |f| %>
-                    <table style="text-align:center; vertical-align:top;">
+                    <table width="100%" align="center" style="text-align:center; vertical-align:top;">
                         <tr>
                             <td>
                                 <div>
