@@ -18,7 +18,7 @@
         }
       </script>
 <%= form_for :search, :url => { :method => :get, :action => :search } do |f| %>
-<table width="100%">
+<table width="100%" >
       <tr>
          <td align="center" style="vertical-align:top;" width="35%">
             <h2 style="color:Black; font-size: x-large;">Specs</h2>               
@@ -56,24 +56,47 @@
                 </td>
             </tr>
          </table>
-         <table>
+         <table align="center" >
             <tr>
-               <td>
-               	  <div class="button">
+               <td align="center">
+               	  <div  style="width:45px;background-color:#33b5e5;
+  border-radius:15px;
+  display:inline-block;
+  color: white;
+  font-family: Raleway;
+  font-size:12px;
+  font-weight:bold;
+  padding:14px 30px;
+  text-decoration: none;
+    padding-botton:0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align:center;">
                     <input type="submit" name="search" value="Search" class="buttonSearch">
                   </div>
                </td>
-               <td width="20px"></td>
+               
             </tr>
             </table>
-            <table>
+            <table align="center">
             <tr>
-               <td>
-               	  <div class="button">
+               <td align="center">
+               	  <div  style="width:45px;background-color:#33b5e5;
+  border-radius:15px;
+  display:inline-block;
+  color: white;
+  font-family: Raleway;
+  font-size:12px;
+  font-weight:bold;
+  padding:14px 30px;
+  text-decoration: none;
+    padding-botton:0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align:center;">
                	      <%= link_to "Back", "/default", { :class => "buttonBack"} %>
                   </div>
-               </td>
-               <td width="15px"></td>
+               
             </tr>
          </table>
          </td>
